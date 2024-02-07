@@ -37,6 +37,7 @@ Escolha a opção desejada:
     def option = scan.nextLine()
     switch (option) {
         case "1":
+            control.registerApplicant(control.manualRegister())
             break
         case "2":
             break
