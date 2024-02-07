@@ -19,7 +19,6 @@ class UserController {
         companies.add(company)
     }
 
-    @SuppressWarnings('GroovyMissingReturnStatement')
     ApplicantModel manualRegisterApplicant() {
         println("\u001b[34m Cadastro de Candidato \u001B[0m")
 
@@ -39,7 +38,7 @@ class UserController {
         String cpf = scan.nextLine()
 
         print("Digite a idade: ")
-        int age = scan.nextInt()
+        String age = scan.nextLine()
 
         print("Aqui, faça uma descrição sobre você: ")
         String description = scan.nextLine()
@@ -66,9 +65,8 @@ class UserController {
                 println("Habilidade Inválida. Por favor, escolha uma da lista!")
             }
         }
-
         println("\n\u001B[36m${name}, seu cadastro foi efetuado!\u001B[0m")
-        def newApplicant = new ApplicantModel(name, email, state, cep, cpf, age, description, skills)
+        return new ApplicantModel(name, email, state, cep, cpf, age.toInteger(), description, skills)
     }
 
     CompanyModel manualRegisterCompany() {
@@ -119,7 +117,7 @@ class UserController {
         }
 
         println("\n\u001B[36m${name}, seu cadastro foi efetuado!\u001B[0m")
-        def newCompany = new CompanyModel(name, email, cnpj, state, country, cep, description, skills)
+        return new CompanyModel(name, email, cnpj, state, country, cep, description, skills)
     }
 
     List<ApplicantModel> listApplicants() {
