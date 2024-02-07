@@ -1,6 +1,6 @@
 package com.acelerazg.view
 
-import com.acelerazg.interfaces.Person
+
 import com.acelerazg.model.ApplicantModel
 import com.acelerazg.model.CompanyModel
 
@@ -21,9 +21,9 @@ class SystemView {
 
     static showCompany (List<CompanyModel> companies) {
         companies.each {company ->
-            println("Nome: ${company.getName()}, " +
+            println("Nome: ${company.name}, " +
                     "CNPJ: ${company.cnpj}, " +
-                    "Email: ${company.getEmail()}, " +
+                    "Email: ${company.email}, " +
                     "Estado: ${company.state}, " +
                     "País: ${company.country}, " +
                     "CEP: ${company.cep}, " +

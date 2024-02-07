@@ -22,23 +22,25 @@ control.registerCompany(c2)
 
 
 while (true) {
-    print('''\u001B[32mSeja bem-vindo ao LinkeTinder!!! \u001B[0m
+    print('''\u001B[32m\nSeja bem-vindo ao LinkeTinder!!! \u001B[0m
 
 Escolha a opção desejada:
 
-1 - Cadastro Candidato (não disponível)
-2 - Cadastro Empresa (não disponível)
+1 - Cadastro Candidato
+2 - Cadastro Empresa
 3 - Listar Candidatos
 4 - Listar Empresas
 0 - Sair
 
-\u001B[33mDigite a opção desejada:  \u001B[0m''')
+\u001B[33mDigite a opção desejada: \u001B[0m''')
 
     def option = scan.nextLine()
     switch (option) {
         case "1":
+            control.registerApplicant(control.manualRegisterApplicant())
             break
         case "2":
+            control.registerCompany(control.manualRegisterCompany())
             break
         case "3":
             systemView.showApplicant(control.listApplicants())
