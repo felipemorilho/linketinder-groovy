@@ -120,6 +120,27 @@ class UserController {
         return new CompanyModel(name, email, cnpj, state, country, cep, description, skills)
     }
 
+    void matchSkills() {
+        def applicantList = applicants.findAll { it instanceof ApplicantModel}
+        def companyList = companies.findAll { it instanceof CompanyModel }
+
+        boolean hasMatch = false
+        applicantList.each {applicant ->
+            companyList.each { company ->
+                if(applicant.getSkills() == company.getSkills()) {
+                    println("""\n\u001B[34mMatch encontrado!!
+                Nome do candidato: ${applicant.name}, Email: ${applicant.email}
+                Nome da empresa: ${company.name}, Email: ${company.email}
+                \u001B[0m""")
+                    hasMatch = true
+                }
+            }
+        }
+        if (!hasMatch) {
+            println("\n\u001B[31mNão há, no momento, match entre candidatos e empresas!!!\u001B[0m")
+        }
+    }
+
     List<ApplicantModel> listApplicants() {
         applicants
     }
