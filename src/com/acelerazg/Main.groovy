@@ -3,30 +3,32 @@ package com.acelerazg
 
 import com.acelerazg.controller.ApplicantController
 import com.acelerazg.controller.BusinessController
-import com.acelerazg.controller.MatchController
+import com.acelerazg.controller.AffinityController
 import com.acelerazg.enums.Skill
 import com.acelerazg.model.Applicant
 import com.acelerazg.model.Business
 import com.acelerazg.view.ApplicantView
 import com.acelerazg.view.BusinessView
+import com.acelerazg.view.SystemView
 
 def controlApplicant = new ApplicantController()
 def controlBusiness = new BusinessController()
 def applicantView = new ApplicantView()
 def businessView = new BusinessView()
-def controlMatch = new MatchController()
-def scan = new Scanner(System.in)
+def controlMatch = new AffinityController()
+def systemView = new SystemView()
 
-def a1 = new Applicant("Pedro", "pedroa@gmail.com", "São Paulo", "11090-080", "123.456.789-00", 32, "Dev Junior", [Skill.PYTHON, Skill.ANGULAR])
-def a2 = new Applicant("Rafaela", "rafa.eu@gmail.com", "Minas Gerais", "39190-980", "123.123.456-99", 21, "Buscando Estágio", [Skill.JAVASCRIPT, Skill.TYPESCRIPT, Skill.JAVA])
-def a3 = new Applicant("Carlos", "rcarlos@gmail.com", "Goias", "62520-980", "352.154.852-98", 52, "Dev Pleno", [Skill.JAVASCRIPT, Skill.ANGULAR, Skill.JAVA])
-def a4 = new Applicant("Juliana", "jujugmail.com", "Bahia", "78450-980", "745.852.369-25", 24, "Dev Senior", [Skill.JAVASCRIPT, Skill.SPRING_FRAMEWORK, Skill.JAVA])
-def a5 = new Applicant("Lucas", "lucas@gmail.com", "Espírito Santo", "29560-980", "123.741.258-99", 31, "Tech Lead", [Skill.JAVASCRIPT])
-def c1 = new Business("Jururu", "contato@jururu.com.br", "12.589.369/0001-89", "São Paulo", "Brasil","11089-090", "Consultoria em Tecnologia", [Skill.PYTHON, Skill.ANGULAR])
-def c2 = new Business("Belami", "contato@belami.com.br", "85.321.753/0004-52", "Paraná", "Brasil", "49008-065", "Desenvolvimento de Sites", [Skill.JAVASCRIPT, Skill.ANGULAR, Skill.TYPESCRIPT])
-def c3 = new Business("LogNation", "contato@log.com.br", "02.584.789/0004-98", "Santa Catarina", "Brasil", "84000-580", "Desenvolvimento de Softwares", [Skill.JAVASCRIPT, Skill.SPRING_FRAMEWORK, Skill.TYPESCRIPT])
-def c4 = new Business("Telecom", "contato@telecom.com.br", "32.025.145/0001-52", "Rio de Janeiro", "Brasil", "21250-850", "Sistemas ERP", [Skill.JAVASCRIPT, Skill.PYTHON])
-def c5 = new Business("EngTec", "contato@engtec.com.br", "41.154.753/0001-56", "Espírito Santo", "Brasil", "29010-470", "Desenvolvimento de  Ecommerce", [Skill.GROOVY, Skill.JAVA])
+Applicant a1 = new Applicant("Pedro", "pedroa@gmail.com", "São Paulo", "11090-080", "123.456.789-00", 32, "Dev Junior", [Skill.PYTHON, Skill.ANGULAR])
+Applicant a2 = new Applicant("Rafaela", "rafa.eu@gmail.com", "Minas Gerais", "39190-980", "123.123.456-99", 21, "Buscando Estágio", [Skill.JAVASCRIPT, Skill.TYPESCRIPT, Skill.JAVA])
+Applicant a3 = new Applicant("Carlos", "rcarlos@gmail.com", "Goias", "62520-980", "352.154.852-98", 52, "Dev Pleno", [Skill.JAVASCRIPT, Skill.ANGULAR, Skill.JAVA])
+Applicant a4 = new Applicant("Juliana", "jujugmail.com", "Bahia", "78450-980", "745.852.369-25", 24, "Dev Senior", [Skill.JAVASCRIPT, Skill.SPRING_FRAMEWORK, Skill.JAVA])
+Applicant a5 = new Applicant("Lucas", "lucas@gmail.com", "Espírito Santo", "29560-980", "123.741.258-99", 31, "Tech Lead", [Skill.JAVASCRIPT])
+
+Business c1 = new Business("Jururu", "contato@jururu.com.br", "12.589.369/0001-89", "São Paulo", "Brasil","11089-090", "Consultoria em Tecnologia", [Skill.PYTHON, Skill.ANGULAR])
+Business c2 = new Business("Belami", "contato@belami.com.br", "85.321.753/0004-52", "Paraná", "Brasil", "49008-065", "Desenvolvimento de Sites", [Skill.JAVASCRIPT, Skill.ANGULAR, Skill.TYPESCRIPT])
+Business c3 = new Business("LogNation", "contato@log.com.br", "02.584.789/0004-98", "Santa Catarina", "Brasil", "84000-580", "Desenvolvimento de Softwares", [Skill.JAVASCRIPT, Skill.SPRING_FRAMEWORK, Skill.TYPESCRIPT])
+Business c4 = new Business("Telecom", "contato@telecom.com.br", "32.025.145/0001-52", "Rio de Janeiro", "Brasil", "21250-850", "Sistemas ERP", [Skill.JAVASCRIPT, Skill.PYTHON])
+Business c5 = new Business("EngTec", "contato@engtec.com.br", "41.154.753/0001-56", "Espírito Santo", "Brasil", "29010-470", "Desenvolvimento de  Ecommerce", [Skill.GROOVY, Skill.JAVA])
 
 controlApplicant.registerApplicant(a1)
 controlApplicant.registerApplicant(a2)
@@ -42,20 +44,7 @@ controlBusiness.registerCompany(c5)
 
 while (true) {
 
-    print('''\u001B[32m\nSeja bem-vindo ao LinkeTinder!!! \u001B[0m
-
-Escolha a opção desejada:
-
-1 - Cadastro Candidato
-2 - Cadastro Empresa
-3 - Listar Candidatos
-4 - Listar Empresas
-5 - Verificar se há match entre candidato/empresa
-0 - Sair
-
-\u001B[33mDigite a opção desejada: \u001B[0m''')
-
-    def option = scan.nextLine()
+    String option = systemView.showMenu()
 
     switch (option) {
 
@@ -81,7 +70,7 @@ Escolha a opção desejada:
 
         case "5":
 
-            controlMatch.matchSkills(controlApplicant.listApplicants(), controlBusiness.listCompanies())
+            controlMatch.affinitySkills(controlApplicant.listApplicants(), controlBusiness.listCompanies())
             break
 
         case "0":

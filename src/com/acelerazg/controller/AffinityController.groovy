@@ -3,11 +3,11 @@ package com.acelerazg.controller
 import com.acelerazg.model.Applicant
 import com.acelerazg.model.Business
 
-class MatchController {
+class AffinityController {
 
-    static matchSkills(List<Applicant> applicant, List<Business> business) {
+    static affinitySkills(List<Applicant> applicant, List<Business> business) {
 
-        boolean hasMatch = false
+        boolean hasAffinity = false
 
         applicant.each {applicants ->
 
@@ -20,13 +20,13 @@ class MatchController {
                 Nome da empresa: ${company.name}, Email: ${company.email}
                 \u001B[0m""")
 
-                    hasMatch = true
+                    hasAffinity = true
 
                 }
             }
         }
 
-        if (!hasMatch) {
+        if (!hasAffinity) {
 
             println("\n\u001B[31mNão há, no momento, match entre candidatos e empresas!!!\u001B[0m")
 

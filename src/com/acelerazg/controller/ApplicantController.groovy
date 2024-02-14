@@ -1,5 +1,6 @@
 package com.acelerazg.controller
 
+
 import com.acelerazg.model.Applicant
 
 class ApplicantController {
