@@ -1,4 +1,4 @@
-Projeto por Felipe Morilho de Castro
+# Projeto por Felipe Morilho de Castro
 
 MVP do Linketinder, uma plataforma para conectar candidatos com empresas.
 

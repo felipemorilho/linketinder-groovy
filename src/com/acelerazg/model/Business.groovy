@@ -4,12 +4,12 @@ import com.acelerazg.controller.SkillController
 import com.acelerazg.enums.Skill
 import com.acelerazg.interfaces.Person
 
-class CompanyModel implements Person {
+class Business implements Person {
 
     String cnpj
     String country
 
-    CompanyModel(String name, String email, String cnpj, String state, String country, String cep, String description, List<Skill> skills) {
+    Business(String name, String email, String cnpj, String state, String country, String cep, String description, List<Skill> skills) {
         this.name = name
         this.email = email
         this.cnpj = cnpj
