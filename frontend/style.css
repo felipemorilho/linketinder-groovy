@@ -1,0 +1,94 @@
+:root {
+    --color-one: #000000;
+    --color-two: #2593ee;
+    --color-three: #f7cf87;
+    --color-hover: #364D70;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--color-three);
+    color: var(--color-one);
+    max-width: 90%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+#home {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+button {
+    padding: 0.75em 2.25em;
+    background-color: var(--color-two);
+    color: var(--color-one);
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: var(--color-hover);
+}
+
+#applicantRegister {
+    display: none;
+    flex-direction: column;
+    font-size: 18px;
+    font-weight: 600;
+    gap: 10px;
+}
+
+#companyRegister {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#skillsContainer, #skillsContainer2 {
+    display: flex;
+    gap: 1em;
+}
+
+#applicantProfile {
+    display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+#companyProfile {
+    display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+#jobVacancy {
+    display: none;
+    flex-direction: column;
+    margin-bottom: 1em;
+    font-size: 18px;
+    font-weight: 600;
+    gap: 10px;
+}
+
+#showChart {
+    display: none;
+    flex-direction: column;
+    gap: 32px;
+}
