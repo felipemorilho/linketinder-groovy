@@ -2,15 +2,6 @@ const applicantList: Applicant[] = [];
 
 fillSkillsOptions('skillsContainer');
 
-// nameApplicant: string = '';
-// ageApplicant
-// emailApplicant
-// cpfApplicant
-// stateApplicant
-// cepApplicant
-// educationApplicant
-// descriptionApplicant
-
 const input = <HTMLInputElement>document.getElementById('applicantName');
 const btnDelete = document.getElementById('btnDelete');
 const profileApplicant = <HTMLInputElement>document.getElementById('showApplicantProfile');
@@ -18,8 +9,7 @@ const vacancyList = <HTMLElement>document.getElementById('vacancyList');
 const skillType = Object.values(Skill) as string[];
 let skillsChart: Chart | null = null;
 
-const ageRegex = /^[1-9]\d{0,1}$/;
-const cpfRegex = /\d{3}\.\d{3}\.\d{3}-\d{2}/;
+
 
 document.getElementById('btnShowApplicant')?.addEventListener('click', () => {
 

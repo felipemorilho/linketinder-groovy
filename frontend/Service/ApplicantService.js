@@ -2,22 +2,12 @@
 var _a;
 const applicantList = [];
 fillSkillsOptions('skillsContainer');
-// nameApplicant: string = '';
-// ageApplicant
-// emailApplicant
-// cpfApplicant
-// stateApplicant
-// cepApplicant
-// educationApplicant
-// descriptionApplicant
 const input = document.getElementById('applicantName');
 const btnDelete = document.getElementById('btnDelete');
 const profileApplicant = document.getElementById('showApplicantProfile');
 const vacancyList = document.getElementById('vacancyList');
 const skillType = Object.values(Skill);
 let skillsChart = null;
-const ageRegex = /^[1-9]\d{0,1}$/;
-const cpfRegex = /\d{3}\.\d{3}\.\d{3}-\d{2}/;
 (_a = document.getElementById('btnShowApplicant')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
     clearHTML(profileApplicant);
     clearHTML(vacancyList);

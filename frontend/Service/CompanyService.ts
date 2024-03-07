@@ -2,20 +2,10 @@ const companyList: Company[] = [];
 
 fillSkillsOptions('skillsContainer2');
 
-// let companyName: string = '';
-// let companyEmail: string = '';
-// let companyCnpj: string = '';
-
 const inputCompany = <HTMLInputElement>document.getElementById('companyName');
 const showCompany = <HTMLInputElement>document.getElementById('showCompanyProfile');
 const applicantRegistered = <HTMLInputElement>document.getElementById('applicantRegistered');
 const btnDeleteCompany = document.getElementById('btnDeleteCompany');
-
-const textRegex = /^[\wÁ-û\s]{3,}$/;
-const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;
-const cnpjRegex = /\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}/;
-const cepRegex = /\d{5}-\d{3}/;
-
 
 document.getElementById('btnShowCompany')?.addEventListener('click', () => {
 
