@@ -2,34 +2,52 @@
 var _a;
 const applicantList = [];
 fillSkillsOptions('skillsContainer');
+// nameApplicant: string = '';
+// ageApplicant
+// emailApplicant
+// cpfApplicant
+// stateApplicant
+// cepApplicant
+// educationApplicant
+// descriptionApplicant
 const input = document.getElementById('applicantName');
 const btnDelete = document.getElementById('btnDelete');
 const profileApplicant = document.getElementById('showApplicantProfile');
 const vacancyList = document.getElementById('vacancyList');
 const skillType = Object.values(Skill);
 let skillsChart = null;
+const ageRegex = /^[1-9]\d{0,1}$/;
+const cpfRegex = /\d{3}\.\d{3}\.\d{3}-\d{2}/;
 (_a = document.getElementById('btnShowApplicant')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
     clearHTML(profileApplicant);
     clearHTML(vacancyList);
 });
 function registerApplicant() {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const state = document.getElementById("state").value;
-    const cep = document.getElementById("cep").value;
-    const education = document.getElementById("education").value;
-    const description = document.getElementById("description").value;
+    const nameApplicantInput = document.getElementById("name").value;
+    const emailApplicantInput = document.getElementById("email").value;
+    const stateApplicantInput = document.getElementById("state").value;
+    const cepApplicantInput = document.getElementById("cep").value;
+    const educationApplicantInput = document.getElementById("education").value;
+    const descriptionApplicantInput = document.getElementById("description").value;
+    const ageApplicantInput = document.getElementById("age").value;
+    const cpfApplicantInput = document.getElementById("cpf").value;
     const skillsSelect = document.querySelectorAll('#skillsContainer input[name="skills"]:checked');
     const skills = Array.from(skillsSelect, option => option.value);
-    const age = parseInt(document.getElementById("age").value);
-    const cpf = document.getElementById("cpf").value;
-    if (name != '' && age > 0 && email != '' && cpf != '' && state != '' && cep != '' && education != '' && description != '' && skills.length > 0) {
-        const applicant = new Applicant(name, age, email, cpf, state, cep, education, description, skills);
+    const nameApplicant = validateRegex(textRegex, nameApplicantInput, "Nome");
+    const emailApplicant = validateRegex(emailRegex, emailApplicantInput, "Email");
+    const stateApplicant = validateRegex(textRegex, stateApplicantInput, "Estado");
+    const cepApplicant = validateRegex(cepRegex, cepApplicantInput, "CEP");
+    const educationApplicant = validateRegex(textRegex, educationApplicantInput, "Formação");
+    const descriptionApplicant = validateRegex(textRegex, descriptionApplicantInput, "Descrição");
+    const ageApplicant = parseInt(validateRegex(ageRegex, ageApplicantInput, "Idade"));
+    const cpfApplicant = validateRegex(cpfRegex, cpfApplicantInput, "CPF");
+    if (skills.length == 0) {
+        alert("Preencha pelo menos uma skill.");
+    }
+    if (nameApplicant != '' && ageApplicant > 0 && emailApplicant != '' && cpfApplicant != '' && stateApplicant != '' && cepApplicant != '' && educationApplicant != '' && descriptionApplicant != '' && skills.length > 0) {
+        const applicant = new Applicant(nameApplicant, ageApplicant, emailApplicant, cpfApplicant, stateApplicant, cepApplicant, educationApplicant, descriptionApplicant, skills);
         applicantList.push(applicant);
         alert(`Candidato Cadastrado!`);
-    }
-    else {
-        alert("Todos campos devem ser preenchidos!");
     }
 }
 function searchApplicant() {

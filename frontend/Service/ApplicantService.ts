@@ -2,12 +2,24 @@ const applicantList: Applicant[] = [];
 
 fillSkillsOptions('skillsContainer');
 
+// nameApplicant: string = '';
+// ageApplicant
+// emailApplicant
+// cpfApplicant
+// stateApplicant
+// cepApplicant
+// educationApplicant
+// descriptionApplicant
+
 const input = <HTMLInputElement>document.getElementById('applicantName');
 const btnDelete = document.getElementById('btnDelete');
 const profileApplicant = <HTMLInputElement>document.getElementById('showApplicantProfile');
 const vacancyList = <HTMLElement>document.getElementById('vacancyList');
 const skillType = Object.values(Skill) as string[];
 let skillsChart: Chart | null = null;
+
+const ageRegex = /^[1-9]\d{0,1}$/;
+const cpfRegex = /\d{3}\.\d{3}\.\d{3}-\d{2}/;
 
 document.getElementById('btnShowApplicant')?.addEventListener('click', () => {
 
@@ -18,28 +30,38 @@ document.getElementById('btnShowApplicant')?.addEventListener('click', () => {
 
 function registerApplicant() {
 
-    const name = (document.getElementById("name") as HTMLInputElement).value;
-    const email = (document.getElementById("email") as HTMLInputElement).value;
-    const state = (document.getElementById("state") as HTMLInputElement).value;
-    const cep = (document.getElementById("cep") as HTMLInputElement).value;
-    const education = (document.getElementById("education") as HTMLInputElement).value;
-    const description = (document.getElementById("description") as HTMLInputElement).value;
+    const nameApplicantInput = (document.getElementById("name") as HTMLInputElement).value;
+    const emailApplicantInput = (document.getElementById("email") as HTMLInputElement).value;
+    const stateApplicantInput = (document.getElementById("state") as HTMLInputElement).value;
+    const cepApplicantInput = (document.getElementById("cep") as HTMLInputElement).value;
+    const educationApplicantInput = (document.getElementById("education") as HTMLInputElement).value;
+    const descriptionApplicantInput = (document.getElementById("description") as HTMLInputElement).value;
+    const ageApplicantInput = (document.getElementById("age") as HTMLInputElement).value;
+    const cpfApplicantInput = (document.getElementById("cpf") as HTMLInputElement).value;
     const skillsSelect = document.querySelectorAll('#skillsContainer input[name="skills"]:checked');
     const skills = Array.from(skillsSelect, option => (option as HTMLSelectElement).value);
-    const age = parseInt((document.getElementById("age") as HTMLInputElement).value);
-    const cpf = (document.getElementById("cpf") as HTMLInputElement).value;
 
-    if (name != '' && age > 0 && email != '' && cpf != '' && state != '' && cep != '' && education != '' && description != '' && skills.length > 0) {
+    const nameApplicant = validateRegex(textRegex, nameApplicantInput, "Nome");
+    const emailApplicant = validateRegex(emailRegex, emailApplicantInput, "Email");
+    const stateApplicant = validateRegex(textRegex, stateApplicantInput, "Estado");
+    const cepApplicant = validateRegex(cepRegex, cepApplicantInput, "CEP");
+    const educationApplicant = validateRegex(textRegex, educationApplicantInput, "Formação");
+    const descriptionApplicant = validateRegex(textRegex, descriptionApplicantInput, "Descrição");
+    const ageApplicant = parseInt(validateRegex(ageRegex, ageApplicantInput, "Idade"));
+    const cpfApplicant = validateRegex(cpfRegex, cpfApplicantInput, "CPF");
 
-        const applicant = new Applicant(name, age, email, cpf, state, cep, education, description, skills);
+    if (skills.length == 0) {
+        
+        alert("Preencha pelo menos uma skill.")
+    }
+
+    if (nameApplicant != '' && ageApplicant > 0 && emailApplicant != '' && cpfApplicant != '' && stateApplicant != '' && cepApplicant != '' && educationApplicant != '' && descriptionApplicant != '' && skills.length > 0) {
+
+        const applicant = new Applicant(nameApplicant, ageApplicant, emailApplicant, cpfApplicant, stateApplicant, cepApplicant, educationApplicant, descriptionApplicant, skills);
 
         applicantList.push(applicant);
 
         alert(`Candidato Cadastrado!`);
-
-    } else {
-
-        alert("Todos campos devem ser preenchidos!");
 
     }
 }
