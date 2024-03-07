@@ -2,28 +2,38 @@
 var _a;
 const companyList = [];
 fillSkillsOptions('skillsContainer2');
+let companyName = '';
+let companyEmail = '';
+let companyCnpj = '';
 const inputCompany = document.getElementById('companyName');
 const showCompany = document.getElementById('showCompanyProfile');
 const applicantRegistered = document.getElementById('applicantRegistered');
 const btnDeleteCompany = document.getElementById('btnDeleteCompany');
+const nameRegex = /^[a-zA-ZÁ-ù\s]+$/;
+const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;
+const cnpjRegex = /\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}/;
 (_a = document.getElementById('btnShowCompany')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
     clearHTML(applicantRegistered);
 });
 function registerCompany() {
-    const name = document.getElementById("nameCompany").value;
-    const email = document.getElementById("emailCompany").value;
-    const cnpj = document.getElementById("cnpjCompany").value;
-    const state = document.getElementById("stateCompany").value;
-    const country = document.getElementById("countryCompany").value;
-    const cep = document.getElementById("cepCompany").value;
-    const description = document.getElementById("descriptionCompany").value;
-    if (name != '' && email != '' && cnpj != '' && state != '' && country != '' && cep != '' && description != '') {
-        const company = new Company(name, email, cnpj, state, country, cep, description);
+    const nameInput = document.getElementById("nameCompany").value;
+    const emailInput = document.getElementById("emailCompany").value;
+    const cnpjInput = document.getElementById("cnpjCompany").value;
+    const stateInput = document.getElementById("stateCompany").value;
+    const countryInput = document.getElementById("countryCompany").value;
+    const cepInput = document.getElementById("cepCompany").value;
+    const descriptionInput = document.getElementById("descriptionCompany").value;
+    const companyName = validateRegex(nameRegex, nameInput, "Nome");
+    const companyEmail = validateRegex(emailRegex, emailInput, "Email");
+    const companyCnpj = validateRegex(emailRegex, emailInput, "Email");
+    const companyState = validateRegex(cnpjRegex, cnpjInput, "CNPJ");
+    const companyCountry = validateRegex(emailRegex, emailInput, "Email");
+    const companyCep = validateRegex(emailRegex, emailInput, "Email");
+    const companyDescription = validateRegex(emailRegex, emailInput, "Email");
+    if (companyName != '' && companyEmail != '' && companyCnpj != '' && companyState != '' && companyCountry != '' && companyCep != '' && companyDescription != '') {
+        const company = new Company(companyName, companyEmail, companyCnpj, companyState, companyCountry, companyCep, companyDescription);
         companyList.push(company);
         alert(`Empresa Cadastrada: ${company.name}!`);
-    }
-    else {
-        alert("Todos campos devem ser preenchidos!");
     }
 }
 function registerJobVacancy() {
