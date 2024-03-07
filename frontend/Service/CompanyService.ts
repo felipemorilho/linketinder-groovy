@@ -2,9 +2,9 @@ const companyList: Company[] = [];
 
 fillSkillsOptions('skillsContainer2');
 
-let companyName: string = '';
-let companyEmail: string = '';
-let companyCnpj: string = '';
+// let companyName: string = '';
+// let companyEmail: string = '';
+// let companyCnpj: string = '';
 
 const inputCompany = <HTMLInputElement>document.getElementById('companyName');
 const showCompany = <HTMLInputElement>document.getElementById('showCompanyProfile');
@@ -14,7 +14,6 @@ const btnDeleteCompany = document.getElementById('btnDeleteCompany');
 const textRegex = /^[\wÁ-û\s]{3,}$/;
 const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;
 const cnpjRegex = /\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}/;
-const stateRegex = /\w{2}/;
 const cepRegex = /\d{5}-\d{3}/;
 
 
@@ -37,7 +36,7 @@ function registerCompany() {
     const companyName = validateRegex(textRegex, nameInput, "Nome");
     const companyEmail = validateRegex(emailRegex, emailInput, "Email");
     const companyCnpj = validateRegex(cnpjRegex, cnpjInput, "CNPJ");
-    const companyState = validateRegex(stateRegex, stateInput, "Estado");
+    const companyState = validateRegex(textRegex, stateInput, "Estado");
     const companyCountry = validateRegex(textRegex, countryInput, "País");
     const companyCep = validateRegex(cepRegex, cepInput, "CEP");
     const companyDescription = validateRegex(textRegex, descriptionInput, "Descrição");
