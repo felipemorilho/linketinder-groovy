@@ -27,7 +27,7 @@ function registerCompany() {
     if (companyName != '' && companyEmail != '' && companyCnpj != '' && companyState != '' && companyCountry != '' && companyCep != '' && companyDescription != '') {
         const company = new Company(companyName, companyEmail, companyCnpj, companyState, companyCountry, companyCep, companyDescription);
         companyList.push(company);
-        alert(`Empresa ${company.name} Cadastrada!`);
+        showAlert(`Empresa ${company.name} Cadastrada!`);
     }
 }
 function registerJobVacancy() {
@@ -39,17 +39,17 @@ function registerJobVacancy() {
     const jobTitle = validateRegex(textRegex, jobTitleInput, "Título da vaga");
     const jobDescription = validateRegex(textRegex, jobDescriptionInput, "Descrição da vaga");
     if (skillsJob.length == 0) {
-        alert("Preencha pelo menos uma skill.");
+        showAlert("Preencha pelo menos uma skill.");
     }
     const companyJob = findCompanyByName(companyNameField);
     if (companyJob) {
         if (jobTitle != '' && jobDescription != '' && skillsJob.length > 0) {
             companyJob.addVacancy(jobTitle, jobDescription, skillsJob);
-            alert(`Vaga cadastrada na empresa ${companyNameField}`);
+            showAlert(`Vaga cadastrada na empresa ${companyNameField}`);
         }
     }
     else {
-        alert('O nome da empresa deve ser digitado!');
+        showAlert('O nome da empresa deve ser digitado!');
     }
 }
 function searchCompany() {
@@ -63,109 +63,11 @@ function deleteCompany() {
             const indexToDelete = companyList.findIndex(company => company.name === companyToDelete);
             if (indexToDelete !== -1) {
                 companyList.splice(indexToDelete, 1);
-                alert('Empresa deletada!');
+                showAlert('Empresa deletada!');
             }
             else {
-                alert('Empresa não encontrada!');
+                showAlert('Empresa não encontrada!');
             }
         }
     }
-}
-function showCompanyDetails(name) {
-    const company = findCompanyByName(name);
-    showCompany.innerHTML = '';
-    if (company) {
-        const title = document.createElement('h2');
-        title.textContent = "Perfil: ";
-        showCompany.appendChild(title);
-        const dataList = document.createElement('ul');
-        const name = document.createElement('li');
-        name.textContent = ` Nome: ${company.name}`;
-        dataList.appendChild(name);
-        const email = document.createElement('li');
-        email.textContent = ` Email: ${company.email}`;
-        dataList.appendChild(email);
-        const cnpj = document.createElement('li');
-        cnpj.textContent = ` Idade: ${company.cnpj}`;
-        dataList.appendChild(cnpj);
-        const state = document.createElement('li');
-        state.textContent = ` Estado: ${company.state}`;
-        dataList.appendChild(state);
-        const country = document.createElement('li');
-        country.textContent = ` Estado: ${company.country}`;
-        dataList.appendChild(country);
-        const cep = document.createElement('li');
-        cep.textContent = ` CEP: ${company.cep}`;
-        dataList.appendChild(cep);
-        const description = document.createElement('li');
-        description.textContent = ` Descrição: ${company.description}`;
-        dataList.appendChild(description);
-        dataList.style.listStyleType = 'none';
-        showCompany.appendChild(dataList);
-    }
-    else {
-        alert('Empresa não encontrada');
-    }
-}
-function showApplicantRegistered() {
-    const registeredApplicants = document.getElementById('applicantRegistered');
-    if (registeredApplicants) {
-        registeredApplicants.innerHTML = '';
-        applicantList.forEach((applicant, index) => {
-            const applicantTitle = document.createElement('h2');
-            applicantTitle.textContent = `Candidato: ${index + 1}`;
-            registeredApplicants.appendChild(applicantTitle);
-            const skillsTitle = document.createElement('h3');
-            skillsTitle.textContent = 'Skills: ';
-            registeredApplicants.appendChild(skillsTitle);
-            const skillList = document.createElement('ul');
-            applicant.skills.forEach(skill => {
-                const skillItem = document.createElement('li');
-                skillItem.textContent = skill;
-                skillList.appendChild(skillItem);
-            });
-            registeredApplicants.appendChild(skillList);
-            const education = document.createElement('h3');
-            education.textContent = `Formação: ${applicant.education}`;
-            registeredApplicants.appendChild(education);
-        });
-    }
-}
-function findCompanyByName(name) {
-    return companyList.find(company => company.name === name);
-}
-document.addEventListener('DOMContentLoaded', () => {
-    const btnGenerateChart = document.querySelector('#btnSkillChart');
-    if (btnGenerateChart) {
-        btnGenerateChart.addEventListener('click', () => {
-            generateChart(applicantList);
-        });
-    }
-});
-function generateChart(applicantList) {
-    const labels = skillType;
-    const count = labels.map(skill => applicantList.filter(applicant => applicant.skills.includes(skill)).length);
-    const context = document.getElementById('skillsChart');
-    if (context) {
-        if (skillsChart) {
-            skillsChart.destroy();
-        }
-        const data = {
-            labels: labels,
-            datasets: [{
-                    label: 'Skills dos Candidatos',
-                    data: count,
-                    legend: {
-                        labels: {
-                            color: 'black',
-                        },
-                    },
-                }],
-        };
-        skillsChart = new Chart(context, {
-            type: 'bar',
-            data: data,
-        });
-    }
-    ;
 }
