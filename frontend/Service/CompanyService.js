@@ -31,16 +31,21 @@ function registerCompany() {
     }
 }
 function registerJobVacancy() {
-    const jobTitle = document.getElementById("jobTitle").value;
-    const jobDescription = document.getElementById('jobDescription').value;
+    const jobTitleInput = document.getElementById("jobTitle").value;
+    const jobDescriptionInput = document.getElementById("jobDescription").value;
     const skillsSelectJob = document.querySelectorAll('#skillsContainer2 input[name="skills"]:checked');
     const skillsJob = Array.from(skillsSelectJob, option => option.value);
-    const companyName = inputCompany.value.toString();
-    const companyJob = findCompanyByName(companyName);
+    const companyNameField = inputCompany.value.toString();
+    const jobTitle = validateRegex(textRegex, jobTitleInput, "Título da vaga");
+    const jobDescription = validateRegex(textRegex, jobDescriptionInput, "Descrição da vaga");
+    if (skillsJob.length == 0) {
+        alert("Preencha pelo menos uma skill.");
+    }
+    const companyJob = findCompanyByName(companyNameField);
     if (companyJob) {
         if (jobTitle != '' && jobDescription != '' && skillsJob.length > 0) {
             companyJob.addVacancy(jobTitle, jobDescription, skillsJob);
-            alert(`Vaga cadastrada na empresa ${companyName}`);
+            alert(`Vaga cadastrada na empresa ${companyNameField}`);
         }
     }
     else {
@@ -121,7 +126,7 @@ function showApplicantRegistered() {
             });
             registeredApplicants.appendChild(skillList);
             const education = document.createElement('h3');
-            education.textContent = `Education: ${applicant.education}`;
+            education.textContent = `Formação: ${applicant.education}`;
             registeredApplicants.appendChild(education);
         });
     }
