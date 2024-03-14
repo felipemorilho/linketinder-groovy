@@ -7,7 +7,7 @@ class BusinessView {
 
     Scanner scan = new Scanner(System.in)
 
-    Business manualRegister() {
+    String[] showBusinessRegistration() {
 
         println("\u001b[34m Cadastro de Empresa \u001B[0m")
 
@@ -32,7 +32,7 @@ class BusinessView {
         print("Aqui, faça uma descrição sobre a empresa: ")
         String description = scan.nextLine()
 
-        ArrayList<Skill> skills = []
+        List<Skill> skills = []
 
         while (true) {
 
@@ -57,7 +57,7 @@ class BusinessView {
                 def skillName = Skill.valueOf(readSkill.toUpperCase())
                 skills.add(skillName)
 
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException ignored) {
 
                 println("Habilidade Inválida. Por favor, escolha uma da lista!")
 
@@ -67,7 +67,7 @@ class BusinessView {
 
         println("\n\u001B[36m${name}, seu cadastro foi efetuado!\u001B[0m")
 
-        return new Business(name, email, cnpj, state, country, cep, description, skills)
+        return [name, email, cnpj, state, country, cep, description, skills]
     }
 
     static showCompany (List<Business> companies) {

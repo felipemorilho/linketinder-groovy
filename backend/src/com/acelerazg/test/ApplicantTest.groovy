@@ -3,20 +3,19 @@ package com.acelerazg.test
 import com.acelerazg.controller.ApplicantController
 import com.acelerazg.enums.Skill
 import com.acelerazg.model.Applicant
-import org.junit.jupiter.api.BeforeEach
+import groovy.test.GroovyTestCase
+import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 
-import static org.junit.jupiter.api.Assertions.assertEquals
 import static org.junit.jupiter.api.Assertions.assertTrue
 
+class ApplicantTest{
 
-class ApplicantTest {
+    static private ApplicantController applicantControl
+    static private Applicant applicantTest
 
-    private ApplicantController applicantControl
-    private Applicant applicantTest
-
-    @BeforeEach
-    void testSetApplicant() {
+    @BeforeAll
+    static void testSetApplicant() {
 
         applicantControl = new ApplicantController()
 
@@ -25,6 +24,7 @@ class ApplicantTest {
                 [Skill.PYTHON, Skill.JAVA, Skill.SPRING_FRAMEWORK])
 
     }
+
     @Test
     void testRegisterApplicant() {
 

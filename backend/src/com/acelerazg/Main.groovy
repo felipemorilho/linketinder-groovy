@@ -7,16 +7,21 @@ import com.acelerazg.controller.AffinityController
 import com.acelerazg.enums.Skill
 import com.acelerazg.model.Applicant
 import com.acelerazg.model.Business
+import com.acelerazg.services.ApplicantService
+import com.acelerazg.services.BusinessService
 import com.acelerazg.view.ApplicantView
 import com.acelerazg.view.BusinessView
 import com.acelerazg.view.SystemView
 
-def controlApplicant = new ApplicantController()
-def controlBusiness = new BusinessController()
-def applicantView = new ApplicantView()
-def businessView = new BusinessView()
-def controlMatch = new AffinityController()
-def systemView = new SystemView()
+ApplicantController controlApplicant = new ApplicantController()
+BusinessController controlBusiness = new BusinessController()
+ApplicantView applicantView = new ApplicantView()
+BusinessView businessView = new BusinessView()
+AffinityController controlMatch = new AffinityController()
+ApplicantService applicantService = new ApplicantService()
+BusinessService businessService = new BusinessService()
+SystemView systemView = new SystemView()
+
 
 Applicant a1 = new Applicant("Pedro", "pedroa@gmail.com", "São Paulo", "11090-080", "123.456.789-00", 32, "Dev Junior", [Skill.PYTHON, Skill.ANGULAR])
 Applicant a2 = new Applicant("Rafaela", "rafa.eu@gmail.com", "Minas Gerais", "39190-980", "123.123.456-99", 21, "Buscando Estágio", [Skill.JAVASCRIPT, Skill.TYPESCRIPT, Skill.JAVA])
@@ -50,12 +55,14 @@ while (true) {
 
         case "1":
 
-            controlApplicant.registerApplicant(applicantView.showApplicantRegistration())
+            String[] registerData = applicantView.showApplicantRegistration()
+            controlApplicant.registerApplicant(applicantService.saveApplicant(registerData))
             break
 
         case "2":
 
-            controlBusiness.registerCompany(businessView.manualRegister())
+            String[] registerBusinessData = businessView.showBusinessRegistration()
+            controlBusiness.registerCompany(businessService.saveBusiness(registerBusinessData))
             break
 
         case "3":

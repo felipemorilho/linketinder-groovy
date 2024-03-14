@@ -7,7 +7,7 @@ class ApplicantView {
 
     Scanner scan = new Scanner(System.in)
 
-    Applicant showApplicantRegistration () {
+    String[] showApplicantRegistration () {
 
         println("\u001b[34m Cadastro de Candidato \u001B[0m")
 
@@ -32,7 +32,7 @@ class ApplicantView {
         print("Aqui, faça uma descrição sobre você: ")
         String description = scan.nextLine()
 
-        def skills = []
+        List<String> skills = []
 
         while (true) {
 
@@ -54,10 +54,10 @@ class ApplicantView {
 
             try {
 
-                def skillName = Skill.valueOf(readSkill.toUpperCase())
-                skills.add(skillName)
+                Skill skillName = Skill.valueOf(readSkill.toUpperCase())
+                skills.add(skillName as String)
 
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException ignored) {
 
                 println("Habilidade Inválida. Por favor, escolha uma da lista!")
 
@@ -67,7 +67,7 @@ class ApplicantView {
 
         println("\n\u001B[36m${name}, seu cadastro foi efetuado!\u001B[0m")
 
-        return new Applicant(name, email, state, cep, cpf, age.toInteger(), description, skills)
+        return [name, email, state, cep, cpf, age.toInteger(), description, skills]
 
     }
 
