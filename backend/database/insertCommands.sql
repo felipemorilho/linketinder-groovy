@@ -1,66 +1,15 @@
-CREATE TABLE applicants (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    age TINYINT,
-    email VARCHAR(100),
-    cpf VARCHAR(14),
-    state VARCHAR(100),
-    cep VARCHAR(9),
-    education VARCHAR(255),
-    description TEXT,
-);
+INSERT INTO skills (name)
+VALUES  ('Java'),
+        ('Python'),
+        ('Groovy'),
+        ('Spring'),
+        ('JavaScript'),
+        ('TypeScript'),
+        ('Node'),
+        ('Angular'),
+        ('React');
 
-CREATE TABLE companies (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
-    email VARCHAR(100),
-    cnpj VARCHAR(18),
-    state VARCHAR(100),
-    country VARCHAR(100),
-    cep VARCHAR(9),
-    description TEXT,
-);
-
-CREATE TABLE job_vacancies (
-    id SERIAL PRIMARY KEY,
-    job_title VARCHAR(100),
-    job_description TEXT,
-    company_id INT FOREIGN KEY REFERENCES companies(id) ON DELETE CASCADE ON UPDATE CASCADE
-)
-
-CREATE TABLE job_vacancy_skills (
-    job_vacancy_id INT FOREIGN KEY REFERENCES job_vacancies(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    skill_id INT FOREIGN KEY REFERENCES skills(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    PRIMARY KEY (job_vacancy_id, skill_id)
-)
-
-CREATE TABLE applicant_job_vacancy (
-    applicant_id INT FOREIGN KEY REFERENCES applicants(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    job_vacancy_id INT FOREIGN KEY REFERENCES job_vacancies(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    PRIMARY KEY (applicant_id, job_vacancy_id)
-)
-
-CREATE TABLE skills(
-    id VARCHAR(100) PRIMARY KEY,
-    name VARCHAR(100)
-    )
-
-CREATE TABLE applicant_skills (
-    applicant_id INT FOREIGN KEY REFERENCES applicants(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    skill_id INT FOREIGN KEY REFERENCES skills(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    PRIMARY KEY (applicant_id, skill_id)
-)
-
-INSERT INTO skills (id, name) 
-VALUES  ('Java', 'Java'),
-        ('Python' = 'Python'),
-        ('Groovy' = 'Groovy'),
-        ('Spring' = 'Spring'),
-        ('JavaScript' = 'JavaScript'),
-        ('TypeScript' = 'TypeScript'),
-        ('Node' = 'Node'),
-        ('Angular' = 'Angular'),
-        ('React' = 'React');
+-- SELECT * FROM skills;
 
 INSERT INTO applicants (name, age, email, cpf, state, cep, education, description)
 VALUES  ('Juca Tatu', 35, 'juta@mail.com', '111.111.111-11', 'Paraná', '11111-111', 'Tecnólogo em ADS', 'Sou dev junior, sem experiência');
@@ -78,51 +27,51 @@ INSERT INTO applicants (name, age, email, cpf, state, cep, education, descriptio
 VALUES  ('Carl Jung', 74, 'carl@mail.com', '555.555.555-55', 'Espírito Santo', '55555-555', 'Doutor em Arquitetura de software', 'Sei até dos pensamentos das IAs, nem ela consegue passar por mim sem eu saber o que ela vai fazer');
 
 INSERT INTO applicant_skills (applicant_id, skill_id)
-VALUES  (1, 'Java'),
-        (1, 'JavaScript'),
-        (1, 'Spring');
+VALUES  (1, 1),
+        (1, 5),
+        (1, 4);
 
 INSERT INTO applicant_skills (applicant_id, skill_id)
-VALUES  (2, 'Python'),
-        (2, 'JavaScript'),
-        (2, 'React');
+VALUES  (2, 2),
+        (2, 5),
+        (2, 9);
 
 INSERT INTO applicant_skills (applicant_id, skill_id)
-VALUES  (3, 'Java'),
-        (3, 'Groovy'),
-        (3, 'TypeScript');
+VALUES  (3, 1),
+        (3, 3),
+        (3, 6);
 
 INSERT INTO applicant_skills (applicant_id, skill_id)
-VALUES  (4, 'Java'),
-        (4, 'Groovy'),
-        (4, 'Angular'),
-        (4, 'JavaScript'),
-        (4, 'TypeScript');
+VALUES  (4, 1),
+        (4, 3),
+        (4, 8),
+        (4, 5),
+        (4, 6);
 
 INSERT INTO applicant_skills (applicant_id, skill_id)
-VALUES  (5, 'Java'),
-        (5, 'Groovy'),
-        (5, 'Spring'),
-        (5, 'Angular'),
-        (5, 'React'),
-        (5, 'Node'),
-        (5, 'JavaScript'),
-        (5, 'TypeScript');
+VALUES  (5, 1),
+        (5, 3),
+        (5, 4),
+        (5, 8),
+        (5, 9),
+        (5, 7),
+        (5, 5),
+        (5, 6);
 
 INSERT INTO companies (name, email, cnpj, state, country, cep, description)
-VALUES ('Log Company', 'contato@logcompany.com', '44.444.444/0004-44', 'Sao Paulo', '44444-444', 'Levando seus pedidos a qualquer lugar do universo!');
+VALUES ('Log Company', 'contato@logcompany.com', '44.444.444/0004-44', 'Brasil', 'Sao Paulo', '44444-444', 'Levando seus pedidos a qualquer lugar do universo!');
 
 INSERT INTO companies (name, email, cnpj, state, country, cep, description)
-VALUES ('Jutsu Academy', 'contato@jutsu.com', '55.555.555/0005-55', 'Rio de Janeiro', '55555-555', 'Elevando seu justu a outro nível, acredite em seu potencial');
+VALUES ('Jutsu Academy', 'contato@jutsu.com', '55.555.555/0005-55', 'Rio de Janeiro', 'Brasil', '55555-555', 'Elevando seu justu a outro nível, acredite em seu potencial');
 
 INSERT INTO companies (name, email, cnpj, state, country, cep, description)
-VALUES ('Philosophy Library', 'contato@philosophy.com', '66.666.666/0006-66', 'Goiás', '66666-666', 'Study philophy and your life will be better than you could imagine. ');
+VALUES ('Philosophy Library', 'contato@philosophy.com', '66.666.666/0006-66', 'Goiás', 'Brasil', '66666-666', 'Study philophy and your life will be better than you could imagine. ');
 
 INSERT INTO companies (name, email, cnpj, state, country, cep, description)
-VALUES ('Tech Solutions Bit', 'contato@techbit.com', '77.777.777/0007-77', 'São Paulo', '77777-777', 'Consultoria para elevar sua empresa para outro patamar.');
+VALUES ('Tech Solutions Bit', 'contato@techbit.com', '77.777.777/0007-77', 'São Paulo', 'Brasil', '77777-777', 'Consultoria para elevar sua empresa para outro patamar.');
 
 INSERT INTO companies (name, email, cnpj, state, country, cep, description)
-VALUES ('ZG Marketing', 'contato@zgmkt.com', '88.888.888/0008-88', 'Goiás', '88888-888', 'Cuidamos do seu marketing como se fosse nosso. Talvez ele realmente seja...');
+VALUES ('ZG Marketing', 'contato@zgmkt.com', '88.888.888/0008-88', 'Goiás', '88888-888', 'Brasil', 'Cuidamos do seu marketing como se fosse nosso. Talvez ele realmente seja...');
 
 INSERT INTO job_vacancies (job_title, job_description, company_id)
 VALUES  ('Dev Junior', 'Não é necessário experiência prévia', 1);
@@ -149,23 +98,23 @@ INSERT INTO job_vacancies (job_title, job_description, company_id)
 VALUES  ('DEV Web', 'Construção e manutenção de páginas web', 5);
 
 INSERT INTO job_Vacancy_skills (job_vacancy_id, skill_id)
-VALUES  (1, 'Java'),
-        (1, 'JavaScript'),
-        (2, 'Java'),
-        (3, 'Python'),
-        (3, 'React'),
-        (4, 'Java'),
-        (4, 'Angular'),
-        (4, 'Groovy'),
-        (5, 'Python'),
-        (5, 'Java'),
-        (5, 'Node'),
-        (6, 'JavaScript'),
-        (6, 'Typescript'),
-        (7, 'Angular'),
-        (8, 'JavaScript'),
-        (8, 'Angular'),
-        (8, 'TypeScript');
+VALUES  (1, 1),
+        (1, 5),
+        (2, 1),
+        (3, 2),
+        (3, 9),
+        (4, 1),
+        (4, 8),
+        (4, 3),
+        (5, 2),
+        (5, 1),
+        (5, 7),
+        (6, 5),
+        (6, 6),
+        (7, 8),
+        (8, 5),
+        (8, 8),
+        (8, 6);
 
 INSERT INTO applicant_job_vacancy (applicant_id, job_vacancy_id)
 VALUES  (1, 1),
@@ -188,3 +137,22 @@ VALUES  (4, 4),
 
 INSERT INTO applicant_job_vacancy (applicant_id, job_vacancy_id)
 VALUES  (5, 5);
+
+-- SELECT * FROM applicant_job_vacancy;
+
+-- SELECT * FROM applicants;
+
+-- SELECT * FROM companies;
+
+/*SELECT
+    a.id AS applicant_id,
+    a.name AS applicant_name,
+    string_agg(jv.job_title, ', ') AS Vacancies_Aplied
+FROM
+    applicants a
+        JOIN
+    applicant_job_vacancy ajv ON a.id = ajv.applicant_id
+        JOIN
+    job_vacancies jv ON ajv.job_vacancy_id = jv.id
+GROUP BY
+    a.id, a.name;*/

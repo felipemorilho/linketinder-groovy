@@ -3,7 +3,6 @@ package com.acelerazg.test
 import com.acelerazg.controller.ApplicantController
 import com.acelerazg.enums.Skill
 import com.acelerazg.model.Applicant
-import groovy.test.GroovyTestCase
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 
