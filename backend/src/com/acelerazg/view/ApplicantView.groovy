@@ -41,10 +41,12 @@ class ApplicantView {
 
             println('''Escolha suas competências: 
 
-            PYTHON, JAVA, SPRING_FRAMEWORK, 
-            ANGULAR, GROOVY, JAVASCRIPT ou TYPESCRIPT
+            PYTHON, JAVA, SPRING, 
+            ANGULAR, GROOVY, JAVASCRIPT,
+            TYPESCRIPT, NODE OU REACT
 
-            Digite "sair" para finalizar.''')
+            Digite "sair" para finalizar.
+            ''')
 
             print("Digite a que deseja adicionar: ")
             String readSkill = scan.nextLine()

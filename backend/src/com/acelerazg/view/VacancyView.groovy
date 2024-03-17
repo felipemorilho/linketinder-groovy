@@ -25,10 +25,12 @@ class VacancyView {
 
             println('''Escolha as competências pertinentes à vaga: 
 
-            PYTHON, JAVA, SPRING_FRAMEWORK,
-                    ANGULAR, GROOVY, JAVASCRIPT ou TYPESCRIPT
+            PPYTHON, JAVA, SPRING, 
+            ANGULAR, GROOVY, JAVASCRIPT,
+            TYPESCRIPT, NODE OU REACT
 
-            Digite "sair" para finalizar.''')
+            Digite "sair" para finalizar.
+            ''')
 
             print("Digite a que deseja adicionar: ")
             String readSkill = scan.nextLine()
