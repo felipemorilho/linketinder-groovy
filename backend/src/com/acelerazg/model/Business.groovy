@@ -2,14 +2,14 @@ package com.acelerazg.model
 
 import com.acelerazg.controller.SkillController
 import com.acelerazg.enums.Skill
-import com.acelerazg.interfaces.Person
+import com.acelerazg.interfaces.Register
 
-class Business implements Person {
+class Business implements Register {
 
     String cnpj
     String country
 
-    Business(String name, String email, String cnpj, String state, String country, String cep, String description, List<Skill> skills) {
+    Business(String name, String email, String cnpj, String state, String country, String cep, String description) {
         this.name = name
         this.email = email
         this.cnpj = cnpj
@@ -17,6 +17,5 @@ class Business implements Person {
         this.country = country
         this.cep = cep
         this.description = description
-        this.skillsTrait = new SkillController(skills)
     }
 }

@@ -1,5 +1,7 @@
 package com.acelerazg.services
 
+import com.acelerazg.dao.BusinessDAO
+import com.acelerazg.dao.DatabaseConnection
 import com.acelerazg.enums.Skill
 import com.acelerazg.model.Business
 
@@ -15,9 +17,9 @@ class BusinessService {
         String cep = registerBusinessData[5]
         String description = registerBusinessData[6]
 
-        String skillsString = registerBusinessData[7].replaceAll("[\\[\\]]", '')
-        List<Skill> skills = skillsString.tokenize(',').collect { Skill.valueOf(it.trim()) }
+//        String skillsString = registerBusinessData[7].replaceAll("[\\[\\]]", '')
+//        List<Skill> skills = skillsString.tokenize(',').collect { Skill.valueOf(it.trim()) }
 
-        return new Business(name, email, cnpj, state, country, cep, description, skills)
+        return new Business(name, email, cnpj, state, country, cep, description)
     }
 }

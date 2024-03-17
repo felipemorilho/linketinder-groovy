@@ -28,3 +28,36 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+/out/production/backend/com/acelerazg/controller/AffinityController$_affinitySkills_closure1$_closure2.class
+/out/production/backend/com/acelerazg/controller/AffinityController$_affinitySkills_closure1.class
+/out/production/backend/com/acelerazg/controller/AffinityController.class
+/out/production/backend/com/acelerazg/model/Applicant.class
+/out/production/backend/com/acelerazg/controller/ApplicantController.class
+/out/production/backend/com/acelerazg/dao/ApplicantDAO.class
+/out/production/backend/com/acelerazg/services/ApplicantService$_saveApplicant_closure1.class
+/out/production/backend/com/acelerazg/services/ApplicantService.class
+/out/production/backend/com/acelerazg/test/ApplicantTest.class
+/out/production/backend/com/acelerazg/view/ApplicantView$_showApplicant_closure1.class
+/out/production/backend/com/acelerazg/view/ApplicantView.class
+/out/production/backend/com/acelerazg/model/Business.class
+/out/production/backend/com/acelerazg/controller/BusinessController.class
+/out/production/backend/com/acelerazg/services/BusinessService$_saveBusiness_closure1.class
+/out/production/backend/com/acelerazg/services/BusinessService.class
+/out/production/backend/com/acelerazg/test/BusinessTest.class
+/out/production/backend/com/acelerazg/view/BusinessView$_showCompany_closure1.class
+/out/production/backend/com/acelerazg/view/BusinessView.class
+/out/production/backend/com/acelerazg/dao/DatabaseConnection.class
+/out/production/backend/com/acelerazg/services/DatabaseService$_create_closure1.class
+/out/production/backend/com/acelerazg/services/DatabaseService.class
+/src/com/acelerazg/services/DatabaseService.groovy
+/out/production/backend/com/acelerazg/test/DatabaseTest.class
+/out/production/backend/com/acelerazg/Main.class
+/out/production/backend/com/acelerazg/interfaces/Person$Trait$FieldHelper.class
+/out/production/backend/com/acelerazg/interfaces/Person$Trait$Helper.class
+/out/production/backend/com/acelerazg/interfaces/Person.class
+/out/production/backend/com/acelerazg/enums/Skill.class
+/out/production/backend/com/acelerazg/controller/SkillController.class
+/out/production/backend/com/acelerazg/interfaces/Skills$Trait$FieldHelper.class
+/out/production/backend/com/acelerazg/interfaces/Skills$Trait$Helper.class
+/out/production/backend/com/acelerazg/interfaces/Skills.class
+/out/production/backend/com/acelerazg/view/SystemView.class

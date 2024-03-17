@@ -12,9 +12,10 @@ Escolha a opção desejada:
 
 1 - Cadastro Candidato
 2 - Cadastro Empresa
-3 - Listar Candidatos
-4 - Listar Empresas
-5 - Verificar se há afinidade entre candidato/empresa
+3 - Cadastro de Vaga
+4 - Listar Candidatos
+5 - Listar Empresas
+6 - Verificar se há afinidade entre candidato/empresa
 0 - Sair
 
 \u001B[33mDigite a opção desejada: \u001B[0m''')

@@ -1,15 +1,17 @@
 package com.acelerazg.controller
 
-
+import com.acelerazg.dao.ApplicantDAO
 import com.acelerazg.model.Applicant
 
 class ApplicantController {
 
-    List<Applicant> applicants = []
+    static private ApplicantDAO applicantDAO = new ApplicantDAO()
 
-    void registerApplicant(Applicant applicant) {
+//    List<Applicant> applicants = []
 
-        applicants.add(applicant)
+    static void registerApplicant(Applicant applicant) {
+
+        applicantDAO.insertApplicant(applicant)
 
     }
 

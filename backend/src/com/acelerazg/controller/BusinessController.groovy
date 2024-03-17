@@ -1,18 +1,20 @@
 package com.acelerazg.controller
 
+import com.acelerazg.dao.BusinessDAO
 import com.acelerazg.model.Business
 
 class BusinessController {
 
-    List<Business> companies = []
+    static private BusinessDAO businessDAO = new BusinessDAO()
+//    List<Business> companies = []
 
-    void registerCompany(Business company) {
+    static void registerBusiness(Business business) {
 
-        companies.add(company)
+        businessDAO.insertBusiness(business)
 
     }
 
-    List<Business> listCompanies() {
+    List<Business> listBusines() {
 
         companies
 

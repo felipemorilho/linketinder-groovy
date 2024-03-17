@@ -6,7 +6,7 @@ import com.acelerazg.model.Applicant
 
 class ApplicantService {
 
-    static private ApplicantDAO applicantDAO = new ApplicantDAO()
+//    static private ApplicantDAO applicantDAO = new ApplicantDAO()
 
     static Applicant saveApplicant(String[] registerApplicantData) {
 
@@ -22,9 +22,7 @@ class ApplicantService {
         String skillsString = registerApplicantData[8].replaceAll("[\\[\\]]", '')
         List<Skill> skills = skillsString.tokenize(',').collect { Skill.valueOf(it.trim()) }
 
-        Applicant applicant = new Applicant(name, email, state, cep, cpf, age, education, description, skills)
-        applicantDAO.insertApplicant(applicant)
+        return new Applicant(name, email, state, cep, cpf, age, education, description, skills)
 
-        return applicant
     }
 }

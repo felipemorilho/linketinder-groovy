@@ -32,42 +32,7 @@ class BusinessView {
         print("Aqui, faça uma descrição sobre a empresa: ")
         String description = scan.nextLine()
 
-        List<Skill> skills = []
-
-        while (true) {
-
-            println('''Escolha suas competências: 
-
-            PYTHON, JAVA, SPRING_FRAMEWORK,
-                    ANGULAR, GROOVY, JAVASCRIPT ou TYPESCRIPT
-
-            Digite "sair" para finalizar.''')
-
-            print("Digite a que deseja adicionar: ")
-            String readSkill = scan.nextLine()
-
-            if (readSkill.equalsIgnoreCase('sair')) {
-
-                break
-
-            }
-
-            try {
-
-                def skillName = Skill.valueOf(readSkill.toUpperCase())
-                skills.add(skillName)
-
-            } catch (IllegalArgumentException ignored) {
-
-                println("Habilidade Inválida. Por favor, escolha uma da lista!")
-
-            }
-
-        }
-
-        println("\n\u001B[36m${name}, seu cadastro foi efetuado!\u001B[0m")
-
-        return [name, email, cnpj, state, country, cep, description, skills]
+        return [name, email, cnpj, state, country, cep, description]
     }
 
     static showCompany (List<Business> companies) {

@@ -5,10 +5,11 @@ import groovy.sql.Sql
 
 class ApplicantDAO {
 
-    static private DatabaseConnection dbConn = new DatabaseConnection()
+    static private DatabaseConnection dbConn
 
     static void insertApplicant(Applicant applicant) {
 
+        dbConn = new DatabaseConnection()
         Sql conn = dbConn.establishConnection()
 
         try {
