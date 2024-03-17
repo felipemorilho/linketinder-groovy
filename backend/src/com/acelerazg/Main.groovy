@@ -23,11 +23,11 @@ BusinessService businessService = new BusinessService()
 SystemView systemView = new SystemView()
 
 
-Applicant a1 = new Applicant("Pedro", "pedroa@gmail.com", "São Paulo", "11090-080", "123.456.789-00", 32, "Dev Junior", [Skill.PYTHON, Skill.ANGULAR])
-Applicant a2 = new Applicant("Rafaela", "rafa.eu@gmail.com", "Minas Gerais", "39190-980", "123.123.456-99", 21, "Buscando Estágio", [Skill.JAVASCRIPT, Skill.TYPESCRIPT, Skill.JAVA])
-Applicant a3 = new Applicant("Carlos", "rcarlos@gmail.com", "Goias", "62520-980", "352.154.852-98", 52, "Dev Pleno", [Skill.JAVASCRIPT, Skill.ANGULAR, Skill.JAVA])
-Applicant a4 = new Applicant("Juliana", "jujugmail.com", "Bahia", "78450-980", "745.852.369-25", 24, "Dev Senior", [Skill.JAVASCRIPT, Skill.SPRING_FRAMEWORK, Skill.JAVA])
-Applicant a5 = new Applicant("Lucas", "lucas@gmail.com", "Espírito Santo", "29560-980", "123.741.258-99", 31, "Tech Lead", [Skill.JAVASCRIPT])
+Applicant a1 = new Applicant("Pedro", "pedroa@gmail.com", "São Paulo", "11090-080", "123.456.789-00", 32, "Superior Completo", "Dev Junior", [Skill.PYTHON, Skill.ANGULAR])
+Applicant a2 = new Applicant("Rafaela", "rafa.eu@gmail.com", "Minas Gerais", "39190-980", "123.123.456-99", 21, "Cursando ADS", "Buscando Estágio", [Skill.JAVASCRIPT, Skill.TYPESCRIPT, Skill.JAVA])
+Applicant a3 = new Applicant("Carlos", "rcarlos@gmail.com", "Goias", "62520-980", "352.154.852-98", 52, "Engenheiro da Compuração", "Dev Pleno", [Skill.JAVASCRIPT, Skill.ANGULAR, Skill.JAVA])
+Applicant a4 = new Applicant("Juliana", "jujugmail.com", "Bahia", "78450-980", "745.852.369-25", 24, "Cientista de dados", "Dev Senior", [Skill.JAVASCRIPT, Skill.SPRING_FRAMEWORK, Skill.JAVA])
+Applicant a5 = new Applicant("Lucas", "lucas@gmail.com", "Espírito Santo", "29560-980", "123.741.258-99", 31, "Pós Graduado em Engenharia de Software", "Tech Lead", [Skill.JAVASCRIPT])
 
 Business c1 = new Business("Jururu", "contato@jururu.com.br", "12.589.369/0001-89", "São Paulo", "Brasil","11089-090", "Consultoria em Tecnologia", [Skill.PYTHON, Skill.ANGULAR])
 Business c2 = new Business("Belami", "contato@belami.com.br", "85.321.753/0004-52", "Paraná", "Brasil", "49008-065", "Desenvolvimento de Sites", [Skill.JAVASCRIPT, Skill.ANGULAR, Skill.TYPESCRIPT])

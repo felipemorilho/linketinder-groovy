@@ -29,6 +29,9 @@ class ApplicantView {
         print("Digite a idade: ")
         String age = scan.nextLine()
 
+        print("Digite a sua formação: ")
+        String education = scan.nextLine()
+
         print("Aqui, faça uma descrição sobre você: ")
         String description = scan.nextLine()
 
@@ -65,9 +68,7 @@ class ApplicantView {
 
         }
 
-        println("\n\u001B[36m${name}, seu cadastro foi efetuado!\u001B[0m")
-
-        return [name, email, state, cep, cpf, age.toInteger(), description, skills]
+        return [name, email, state, cep, cpf, age.toInteger(), education, description, skills]
 
     }
 
