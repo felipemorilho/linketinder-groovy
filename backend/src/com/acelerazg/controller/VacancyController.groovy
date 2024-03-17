@@ -1,15 +1,15 @@
 package com.acelerazg.controller
 
-
+import com.acelerazg.dao.VacancyDAO
 import com.acelerazg.model.Vacancy
 
 class VacancyController {
 
-    List<Vacancy> vacancies = []
+    static private VacancyDAO vacancyDAO = new VacancyDAO()
 
-    void registerVacancy(Vacancy vacancy) {
+    static void registerVacancy(Vacancy vacancy) {
 
-        vacancies.add(vacancy)
+        vacancyDAO.insertVacancy(vacancy)
 
     }
 

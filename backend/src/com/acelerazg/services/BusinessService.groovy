@@ -1,8 +1,6 @@
 package com.acelerazg.services
 
-import com.acelerazg.dao.BusinessDAO
-import com.acelerazg.dao.DatabaseConnection
-import com.acelerazg.enums.Skill
+
 import com.acelerazg.model.Business
 
 class BusinessService {

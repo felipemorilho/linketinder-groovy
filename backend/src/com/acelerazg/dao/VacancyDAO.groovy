@@ -1,7 +1,8 @@
 package com.acelerazg.dao
 
-import com.acelerazg.model.Applicant
+
 import com.acelerazg.model.Vacancy
+import groovy.sql.GroovyRowResult
 import groovy.sql.Sql
 
 class VacancyDAO {
@@ -19,11 +20,23 @@ class VacancyDAO {
                     [vacancy.jobTitle, vacancy.jobDescription, vacancy.businessId])
 
         } catch (Exception e) {
-            println("Não foi possível adicionar vaga. Erro: ${e.message}")
+            println("Não foi possível adicionar vaga.")
 
         } finally {
             dbConn.closeConnection(conn)
         }
 
+    }
+
+    static boolean checkIfBusinessExists(int businessId) {
+
+        Sql conn = dbConn.establishConnection()
+
+        GroovyRowResult businessExist = conn.firstRow("SELECT COUNT (*) FROM companies " +
+                "WHERE id = ?", businessId)
+
+        dbConn.closeConnection(conn)
+
+        return businessExist[0] > 0
     }
 }

@@ -26,18 +26,11 @@ class DatabaseConnection {
 
             if(sql != null) {
                 sql.close()
-                println("Conexão com o banco de dados finalizada!")
             }
         } catch (Exception e) {
 
-            println("Erro ao fehcar conexão com o banco de dados!")
+            println("Erro ao fechar conexão com o banco de dados!")
         }
-    }
-
-    void bdCreate(String[] valuesList) {
-
-        Sql sql = establishConnection()
-
     }
 
 }

@@ -5,7 +5,9 @@ import com.acelerazg.controller.AffinityController
 import com.acelerazg.controller.ApplicantController
 import com.acelerazg.controller.BusinessController
 import com.acelerazg.controller.VacancyController
+import com.acelerazg.model.Applicant
 import com.acelerazg.model.Business
+import com.acelerazg.model.Vacancy
 import com.acelerazg.services.ApplicantService
 import com.acelerazg.services.BusinessService
 import com.acelerazg.services.VacancyService
@@ -60,19 +62,22 @@ while (true) {
         case "1":
 
             String[] registerApplicantData = applicantView.showApplicantRegistration()
-            controlApplicant.registerApplicant(applicantService.saveApplicant(registerApplicantData))
+            Applicant newApplicant = applicantService.saveApplicant(registerApplicantData)
+            controlApplicant.registerApplicant(newApplicant)
             break
 
         case "2":
 
             String[] registerBusinessData = businessView.showBusinessRegistration()
-            controlBusiness.registerBusiness(businessService.saveBusiness(registerBusinessData))
+            Business newBusiness = businessService.saveBusiness(registerBusinessData)
+            controlBusiness.registerBusiness(newBusiness)
             break
 
         case "3":
 
             String[] registerVacancyData = vacancyView.showVacancyRegistration()
-            vacancyController.registerVacancy(vacancyService.saveVacancy(registerVacancyData))
+            Vacancy newVacancy = vacancyService.saveVacancy(registerVacancyData)
+            vacancyController.registerVacancy(newVacancy)
             break
 
         case "4":

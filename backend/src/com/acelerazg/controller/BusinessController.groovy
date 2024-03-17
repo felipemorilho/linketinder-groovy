@@ -14,7 +14,7 @@ class BusinessController {
 
     }
 
-    List<Business> listBusines() {
+    List<Business> listCompanies() {
 
         companies
 

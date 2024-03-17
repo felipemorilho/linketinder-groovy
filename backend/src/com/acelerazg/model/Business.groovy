@@ -1,7 +1,6 @@
 package com.acelerazg.model
 
-import com.acelerazg.controller.SkillController
-import com.acelerazg.enums.Skill
+
 import com.acelerazg.interfaces.Register
 
 class Business implements Register {

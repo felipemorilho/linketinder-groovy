@@ -1,9 +1,8 @@
 package com.acelerazg.services
 
-import com.acelerazg.dao.ApplicantDAO
+
 import com.acelerazg.dao.VacancyDAO
 import com.acelerazg.enums.Skill
-import com.acelerazg.model.Applicant
 import com.acelerazg.model.Vacancy
 
 class VacancyService {
@@ -12,16 +11,30 @@ class VacancyService {
 
     static Vacancy saveVacancy(String[] registerVacancyData) {
 
-        String jobTitle = registerVacancyData[0]
-        String jobDescription = registerVacancyData[1]
-        int businessId = registerVacancyData[2].toInteger()
+        try {
 
-        String skillsString = registerVacancyData[3].replaceAll("[\\[\\]]", '')
-        List<Skill> skills = skillsString.tokenize(',').collect { Skill.valueOf(it.trim()) }
+            String jobTitle = registerVacancyData[0]
+            String jobDescription = registerVacancyData[1]
+            int businessId = registerVacancyData[2].toInteger()
 
-        Vacancy vacancy = new Vacancy(jobTitle, jobDescription, businessId, skills)
-        vacancyDAO.insertVacancy(vacancy)
+            boolean businessExist = vacancyDAO.checkIfBusinessExists(businessId)
 
-        return vacancy
+            if(!businessExist) {
+
+                println("Empresa com ID: ${businessId} não existe.")
+                return null
+            }
+
+            String skillsString = registerVacancyData[3].replaceAll("[\\[\\]]", '')
+            List<Skill> skills = skillsString.tokenize(',').collect { Skill.valueOf(it.trim()) }
+
+            return new Vacancy(jobTitle, jobDescription, businessId, skills)
+
+        } catch (Exception ignore) {
+
+            println("Erro ao cadastrar vaga.")
+            return null
+        }
+
     }
 }

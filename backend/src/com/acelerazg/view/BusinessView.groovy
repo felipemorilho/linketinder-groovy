@@ -1,6 +1,6 @@
 package com.acelerazg.view
 
-import com.acelerazg.enums.Skill
+
 import com.acelerazg.model.Business
 
 class BusinessView {

@@ -1,6 +1,6 @@
 package com.acelerazg.services
 
-import com.acelerazg.dao.ApplicantDAO
+
 import com.acelerazg.enums.Skill
 import com.acelerazg.model.Applicant
 
