@@ -1,33 +1,10 @@
 //Felipe Morilho de Castro
 package com.acelerazg
 
-import com.acelerazg.controller.AffinityController
-import com.acelerazg.controller.ApplicantController
-import com.acelerazg.controller.BusinessController
-import com.acelerazg.controller.VacancyController
-import com.acelerazg.model.Applicant
-import com.acelerazg.model.Business
-import com.acelerazg.model.Vacancy
-import com.acelerazg.services.ApplicantService
-import com.acelerazg.services.BusinessService
-import com.acelerazg.services.VacancyService
-import com.acelerazg.view.ApplicantView
-import com.acelerazg.view.BusinessView
+
 import com.acelerazg.view.SystemView
-import com.acelerazg.view.VacancyView
 
-ApplicantController controlApplicant = new ApplicantController()
-BusinessController controlBusiness = new BusinessController()
-VacancyController vacancyController = new VacancyController()
-ApplicantView applicantView = new ApplicantView()
-BusinessView businessView = new BusinessView()
-VacancyView vacancyView = new VacancyView()
-AffinityController controlMatch = new AffinityController()
-ApplicantService applicantService = new ApplicantService()
-BusinessService businessService = new BusinessService()
-VacancyService vacancyService = new VacancyService()
 SystemView systemView = new SystemView()
-
 
 //Applicant a1 = new Applicant("Pedro", "pedroa@gmail.com", "São Paulo", "11090-080", "123.456.789-00", 32, "Superior Completo", "Dev Junior", [Skill.PYTHON, Skill.ANGULAR])
 //Applicant a2 = new Applicant("Rafaela", "rafa.eu@gmail.com", "Minas Gerais", "39190-980", "123.123.456-99", 21, "Cursando ADS", "Buscando Estágio", [Skill.JAVASCRIPT, Skill.TYPESCRIPT, Skill.JAVA])
@@ -57,7 +34,9 @@ while (true) {
 
     String option = systemView.showMenu()
 
-    switch (option) {
+    systemView.selectOption(option)
+
+    /*switch (option) {
 
         case "1":
 
@@ -87,12 +66,17 @@ while (true) {
 
         case "5":
 
-            businessView.showCompany(controlBusiness.listCompanies())
+            businessView.showCompany(controlBusiness.listBusiness())
             break
 
         case "6":
 
-            controlMatch.affinitySkills(controlApplicant.listApplicants(), controlBusiness.listCompanies())
+            vacancyView.showVacancy(vacancyController.listVacancies())
+            break
+
+        case "7":
+
+            controlMatch.affinitySkills(controlApplicant.listApplicants(), vacancyController.listVacancies())
             break
 
         case "0":
@@ -105,5 +89,5 @@ while (true) {
 
             println("Opção inválida! Por favor, digite uma opção válida.")
 
-    }
+    }*/
 }

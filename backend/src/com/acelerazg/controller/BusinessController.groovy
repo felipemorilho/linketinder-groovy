@@ -14,9 +14,11 @@ class BusinessController {
 
     }
 
-    List<Business> listCompanies() {
+    static List<Business> listBusiness() {
 
-        companies
+        List<Business> businesses = businessDAO.readBusiness()
+
+        return businesses
 
     }
 }

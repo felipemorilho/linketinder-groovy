@@ -1,6 +1,8 @@
 package com.acelerazg.view
 
 import com.acelerazg.enums.Skill
+import com.acelerazg.model.Applicant
+import com.acelerazg.model.Vacancy
 
 class VacancyView {
 
@@ -54,5 +56,17 @@ class VacancyView {
         }
 
         return [jobTitle, jobDescription, businessId.toInteger(), skills]
+    }
+
+    static showVacancy (List<Vacancy> vacancies) {
+
+        vacancies.each { vacancy ->
+
+            println("Título: ${vacancy.jobTitle}, " +
+                    "Descrição: ${vacancy.jobDescription}, " +
+                    "Skills: ${vacancy.getSkills()} " +
+                    "Empresa: ${vacancy.businessId}"
+            )
+        }
     }
 }

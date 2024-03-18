@@ -1,6 +1,7 @@
 package com.acelerazg.dao
 
-
+import com.acelerazg.enums.Skill
+import com.acelerazg.model.Applicant
 import com.acelerazg.model.Vacancy
 import groovy.sql.GroovyRowResult
 import groovy.sql.Sql
@@ -40,6 +41,47 @@ class VacancyDAO {
             dbConn.closeConnection(conn)
         }
 
+    }
+
+    static List<Vacancy> readVacancies() {
+
+        Sql conn = dbConn.establishConnection()
+
+        List<Vacancy> vacancies = []
+
+        try {
+
+            List<GroovyRowResult> rows = conn.rows("SELECT * FROM job_vacancies")
+
+            rows.each { row ->
+
+                def vacancyId = conn.firstRow("SELECT id FROM job_vacancies WHERE id = ?", row.id)?.id
+
+                List<Skill> skills = []
+
+                if (vacancyId) {
+                    List<GroovyRowResult> skillsRows = conn.rows("SELECT name FROM skills" +
+                            " INNER JOIN job_vacancy_skills ON skills.id = job_vacancy_skills.skill_id " +
+                            " WHERE job_vacancy_skills.job_vacancy_id = ?", [vacancyId])
+
+                    skills = skillsRows.collect { it.name.toUpperCase() }.collect { Skill.valueOf(it as String) } as List<Skill>                }
+
+                row.skills = skills
+
+                Vacancy vacancy = new Vacancy(
+                        row.job_title.toString(),
+                        row.job_description.toString(),
+                        row.company_id as int,
+                        skills
+                )
+
+                vacancies.add(vacancy)
+            }
+        } finally {
+            dbConn.closeConnection(conn)
+        }
+
+        return vacancies
     }
 
     static boolean checkIfBusinessExists(int businessId) {

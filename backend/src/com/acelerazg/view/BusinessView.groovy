@@ -45,9 +45,8 @@ class BusinessView {
                     "Estado: ${company.state}, " +
                     "País: ${company.country}, " +
                     "CEP: ${company.cep}, " +
-                    "Descrição: ${company.description}, " +
-                    "Competencias: ${company.getSkills()}")
+                    "Descrição: ${company.description}"
 
-        }
+            )}
     }
 }

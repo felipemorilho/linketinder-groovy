@@ -13,9 +13,11 @@ class VacancyController {
 
     }
 
-    List<Vacancy> listVacancies() {
+    static List<Vacancy> listVacancies() {
 
-        vacancies
+       List<Vacancy> vacancies = vacancyDAO.readVacancies()
+
+        return vacancies
 
     }
 
