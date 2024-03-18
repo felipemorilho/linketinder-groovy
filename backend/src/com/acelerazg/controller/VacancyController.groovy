@@ -17,8 +17,14 @@ class VacancyController {
 
        List<Vacancy> vacancies = vacancyDAO.readVacancies()
 
-        return vacancies
+        if(!vacancies.isEmpty()) {
 
+            return vacancies
+        }
+
+        println("Não há vagas cadastradas.")
+
+        return null
     }
 
 }

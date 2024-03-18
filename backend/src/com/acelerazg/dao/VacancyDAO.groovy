@@ -1,7 +1,6 @@
 package com.acelerazg.dao
 
 import com.acelerazg.enums.Skill
-import com.acelerazg.model.Applicant
 import com.acelerazg.model.Vacancy
 import groovy.sql.GroovyRowResult
 import groovy.sql.Sql
@@ -77,7 +76,13 @@ class VacancyDAO {
 
                 vacancies.add(vacancy)
             }
+
+        } catch (Exception ignore) {
+
+            println("Erro ao ler dados.")
+
         } finally {
+
             dbConn.closeConnection(conn)
         }
 

@@ -80,7 +80,13 @@ class ApplicantDAO {
 
                 applicants.add(applicant)
             }
+
+        } catch (Exception ignore) {
+
+            println("Erro ao ler dados.")
+
         } finally {
+
             dbConn.closeConnection(conn)
         }
 

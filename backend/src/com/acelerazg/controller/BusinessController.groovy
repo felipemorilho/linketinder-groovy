@@ -6,7 +6,6 @@ import com.acelerazg.model.Business
 class BusinessController {
 
     static private BusinessDAO businessDAO = new BusinessDAO()
-//    List<Business> companies = []
 
     static void registerBusiness(Business business) {
 
@@ -18,7 +17,13 @@ class BusinessController {
 
         List<Business> businesses = businessDAO.readBusiness()
 
-        return businesses
+        if(!businesses.isEmpty()) {
 
+            return businesses
+        }
+
+        println("Não há empresas para exibir.")
+
+        return null
     }
 }

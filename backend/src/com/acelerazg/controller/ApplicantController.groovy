@@ -17,8 +17,15 @@ class ApplicantController {
 
         List<Applicant> applicants = applicantDAO.readApplicants()
 
-        return applicants
+        if(!applicants.isEmpty()) {
 
+            return applicants
+
+        }
+
+        println("Não há candidatos para exibir.")
+
+        return null
     }
 
 }

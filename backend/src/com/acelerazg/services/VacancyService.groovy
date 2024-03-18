@@ -1,6 +1,6 @@
 package com.acelerazg.services
 
-import com.acelerazg.dao.JobVacancySkillsDAO
+
 import com.acelerazg.dao.VacancyDAO
 import com.acelerazg.enums.Skill
 import com.acelerazg.model.Vacancy
@@ -8,7 +8,6 @@ import com.acelerazg.model.Vacancy
 class VacancyService {
 
     static private VacancyDAO vacancyDAO = new VacancyDAO()
-    static private JobVacancySkillsDAO jvsDAO = new JobVacancySkillsDAO()
 
     static Vacancy saveVacancy(String[] registerVacancyData) {
 
