@@ -6,8 +6,6 @@ import com.acelerazg.model.Applicant
 
 class ApplicantService {
 
-//    static private ApplicantDAO applicantDAO = new ApplicantDAO()
-
     static Applicant saveApplicant(String[] registerApplicantData) {
 
         String name = registerApplicantData[0]

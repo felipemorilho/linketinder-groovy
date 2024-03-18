@@ -67,25 +67,24 @@ class ApplicantView {
                 println("Habilidade Inválida. Por favor, escolha uma da lista!")
 
             }
-
         }
 
         return [name, email, state, cep, cpf, age.toInteger(), education, description, skills]
 
     }
 
-    static showApplicant (List<Applicant> users) {
+    static showApplicant (List<Applicant> applicants) {
 
-        users.each { person ->
+        applicants.each { applicant ->
 
-            println("Nome: ${person.getName()}, " +
-                    "Idade: ${person.age}, " +
-                    "CPF: ${person.cpf}, " +
-                    "Email: ${person.getEmail()}, " +
-                    "Estado: ${person.state}, " +
-                    "CEP: ${person.cep}, " +
-                    "Descrição: ${person.description}, " +
-                    "Competencias: ${person.getSkills()}")
+            println("Nome: ${applicant.name}, " +
+                    "Idade: ${applicant.age}, " +
+                    "CPF: ${applicant.cpf}, " +
+                    "Email: ${applicant.email}, " +
+                    "Estado: ${applicant.state}, " +
+                    "CEP: ${applicant.cep}, " +
+                    "Descrição: ${applicant.description}, " +
+                    "Competencias: ${applicant.getSkills()}")
 
         }
     }

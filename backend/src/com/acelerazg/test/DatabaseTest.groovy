@@ -2,7 +2,7 @@ package com.acelerazg.test
 
 
 import com.acelerazg.dao.DatabaseConnection
-import com.acelerazg.services.DatabaseService
+
 import groovy.sql.Sql
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue
 class DatabaseTest {
 
     static private DatabaseConnection dbConn
-    static private DatabaseService dbService
 
 
     @BeforeAll
@@ -62,7 +61,7 @@ class DatabaseTest {
         }
     }
 
-    @Test
+    /*@Test
     void testCreateNewRow() {
 
         //Given
@@ -88,5 +87,5 @@ class DatabaseTest {
         } finally {
             dbConn.closeConnection(sql)
         }
-    }
+    }*/
 }

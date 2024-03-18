@@ -20,9 +20,11 @@ class BusinessDAO {
                      business.state, business.country, business.cep, business.description])
 
         } catch (Exception e) {
-            println("Não foi possível adicionar candidato. Erro: ${e.message}")
+
+            println("Não foi possível adicionar empresa. Erro: ${e.message}")
 
         } finally {
+
             dbConn.closeConnection(conn)
         }
 

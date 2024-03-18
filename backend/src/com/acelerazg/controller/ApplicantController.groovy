@@ -15,9 +15,11 @@ class ApplicantController {
 
     }
 
-    List<Applicant> listApplicants() {
+    static List<Applicant> listApplicants() {
 
-        applicants
+        List<Applicant> applicants = applicantDAO.readApplicants()
+
+        return applicants
 
     }
 

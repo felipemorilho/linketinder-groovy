@@ -19,10 +19,24 @@ class VacancyDAO {
                     "VALUES (?, ?, ?)",
                     [vacancy.jobTitle, vacancy.jobDescription, vacancy.businessId])
 
-        } catch (Exception e) {
+
+            def vacancyId = conn.firstRow("SELECT id FROM job_vacancies WHERE company_id = ? AND job_title = ?", vacancy.businessId, vacancy.jobTitle).id
+
+            vacancy.skills.forEach{skill ->
+
+                def skillId = conn.firstRow("SELECT id FROM skills WHERE UPPER(name) = ?::text", [skill.toString()]).id
+
+                conn.execute("INSERT INTO job_vacancy_skills (job_vacancy_id, skill_id) " +
+                        "VALUES (?, ?)",
+                        vacancyId, skillId)
+            }
+
+        } catch (Exception ignore) {
+
             println("Não foi possível adicionar vaga.")
 
         } finally {
+
             dbConn.closeConnection(conn)
         }
 
