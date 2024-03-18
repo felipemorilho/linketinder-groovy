@@ -41,7 +41,8 @@ Escolha a opção desejada:
 4 - Listar Candidatos
 5 - Listar Empresas
 6 - Listar Vagas
-7 - Verificar se há afinidade entre candidato/empresa
+7 - Atualizar Perfil Candidato
+8 - Verificar se há afinidade entre candidato/empresa
 0 - Sair
 
 \u001B[33mDigite a opção desejada: \u001B[0m''')
@@ -63,21 +64,21 @@ Escolha a opção desejada:
                     String[] registerApplicantData = applicantView.showApplicantRegistration()
                     Applicant newApplicant = applicantService.saveApplicant(registerApplicantData)
                     controlApplicant.registerApplicant(newApplicant)
-                    break
+                    return
 
                 case "2":
 
                     String[] registerBusinessData = businessView.showBusinessRegistration()
                     Business newBusiness = businessService.saveBusiness(registerBusinessData)
                     controlBusiness.registerBusiness(newBusiness)
-                    break
+                    return
 
                 case "3":
 
                     String[] registerVacancyData = vacancyView.showVacancyRegistration()
                     Vacancy newVacancy = vacancyService.saveVacancy(registerVacancyData)
                     vacancyController.registerVacancy(newVacancy)
-                    break
+                    return
 
                 case "4":
 
@@ -87,27 +88,36 @@ Escolha a opção desejada:
                 case "5":
 
                     businessView.showCompany(controlBusiness.listBusiness())
-                    break
+                    return
 
                 case "6":
 
                     vacancyView.showVacancy(vacancyController.listVacancies())
-                    break
+                    return
 
                 case "7":
 
+                    String cpf = applicantView.informCpf()
+                    String[] registerApplicantData = applicantView.showApplicantRegistration()
+                    Applicant newApplicant = applicantService.saveApplicant(registerApplicantData)
+                    controlApplicant.updateApplicant(cpf, newApplicant)
+                    return
+
+                case "8":
+
                     controlMatch.affinitySkills(controlApplicant.listApplicants(), vacancyController.listVacancies())
-                    break
+                    return
 
                 case "0":
 
                     println("Muito obrigado pela visita!!!")
                     System.exit(0)
-                    break
+                    return
 
                 default:
 
                     println("Opção inválida! Por favor, digite uma opção válida.")
+                    return
 
             }
         }

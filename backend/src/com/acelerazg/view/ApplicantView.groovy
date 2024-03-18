@@ -88,4 +88,20 @@ class ApplicantView {
 
         }
     }
+
+
+    /*Applicant showUpdateApplicant() {
+
+        String[] updateApplicant = showApplicantRegistration()
+
+        return new Applicant(updateApplicant)
+    }*/
+
+    String informCpf() {
+
+        println("Informe o cpf: ")
+        String cpf = scan.nextLine()
+
+        return cpf
+    }
 }

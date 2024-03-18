@@ -13,6 +13,12 @@ class ApplicantController {
 
     }
 
+    static void updateApplicant(String cpf, Applicant applicant) {
+
+        applicantDAO.updateApplicant(cpf, applicant)
+
+    }
+
     static List<Applicant> listApplicants() {
 
         List<Applicant> applicants = applicantDAO.readApplicants()

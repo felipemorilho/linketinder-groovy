@@ -93,4 +93,39 @@ class ApplicantDAO {
         return applicants
     }
 
+    static void updateApplicant(String cpf, Applicant applicant) {
+
+        Sql conn = dbConn.establishConnection()
+
+        try {
+
+            def applicantId = conn.firstRow("SELECT id FROM applicants WHERE cpf = ?", cpf).id
+
+            conn.execute("DELETE FROM applicant_skills WHERE applicant_id = ?", applicantId)
+
+            String updateQuery = "UPDATE applicants SET name=?, age=?, email=?, " +
+                    "cpf=?, state=?, cep=?, education=?, description=? WHERE id=?"
+
+            conn.execute(updateQuery, applicant.name, applicant.age, applicant.email,
+                    applicant.cpf, applicant.state, applicant.cep,
+                    applicant.education, applicant.description, applicantId)
+
+            applicant.skills.forEach { skill ->
+
+                def skillId = conn.firstRow("SELECT id FROM skills WHERE UPPER(name) = ?::text", [skill.toString()]).id
+
+                conn.execute("INSERT INTO applicant_skills (applicant_id, skill_id) " +
+                        "VALUES (?, ?)",
+                        applicantId, skillId)
+
+            }
+
+        } catch (Exception ignore) {
+            println("Erro ao atualizar candidato.")
+
+        } finally {
+
+            dbConn.closeConnection(conn)
+        }
+    }
 }
