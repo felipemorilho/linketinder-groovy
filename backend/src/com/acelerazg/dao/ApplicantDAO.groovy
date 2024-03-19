@@ -128,4 +128,26 @@ class ApplicantDAO {
             dbConn.closeConnection(conn)
         }
     }
+
+    static void deleteApplicant(String cpf) {
+
+        Sql conn = dbConn.establishConnection()
+
+        try {
+
+            def applicantId = conn.firstRow("SELECT id FROM applicants WHERE cpf = ?", cpf).id
+
+            String deleteQuery = "DELETE FROM applicants WHERE id=?"
+
+            conn.execute(deleteQuery, applicantId)
+
+        } catch (Exception ignore) {
+
+            println("Erro ao deletar, tente novamente.")
+
+        } finally {
+
+            dbConn.closeConnection(conn)
+        }
+    }
 }

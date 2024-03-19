@@ -13,12 +13,6 @@ class ApplicantController {
 
     }
 
-    static void updateApplicant(String cpf, Applicant applicant) {
-
-        applicantDAO.updateApplicant(cpf, applicant)
-
-    }
-
     static List<Applicant> listApplicants() {
 
         List<Applicant> applicants = applicantDAO.readApplicants()
@@ -32,6 +26,17 @@ class ApplicantController {
         println("Não há candidatos para exibir.")
 
         return null
+    }
+
+    static void updateApplicant(String cpf, Applicant applicant) {
+
+        applicantDAO.updateApplicant(cpf, applicant)
+
+    }
+
+    static void deleteApplicant(String cpf) {
+
+        applicantDAO.deleteApplicant(cpf)
     }
 
 }

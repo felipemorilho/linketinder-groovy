@@ -26,10 +26,10 @@ class SystemView {
     static BusinessService businessService = new BusinessService()
     static VacancyService vacancyService = new VacancyService()
 
+    static Scanner scan = new Scanner(System.in)
 
     static String showMenu() {
 
-        Scanner scan = new Scanner(System.in)
 
         print('''\u001B[32m\nSeja bem-vindo ao LinkeTinder!!! \u001B[0m
 
@@ -41,8 +41,11 @@ Escolha a opção desejada:
 4 - Listar Candidatos
 5 - Listar Empresas
 6 - Listar Vagas
-7 - Atualizar Perfil Candidato
-8 - Verificar se há afinidade entre candidato/empresa
+7 - Atualizar Candidato
+8 - Atualizar Empresa
+9 - Deletar Candidato
+10 - Deletar Empresa
+11 - Verificar se há afinidade entre candidato/empresa
 0 - Sair
 
 \u001B[33mDigite a opção desejada: \u001B[0m''')
@@ -51,6 +54,14 @@ Escolha a opção desejada:
 
         return option
 
+    }
+
+    static String informData() {
+
+        println("Informe o cpf/cnpj: ")
+        String data = scan.nextLine()
+
+        return data
     }
 
     static selectOption(String option) {
@@ -97,13 +108,33 @@ Escolha a opção desejada:
 
                 case "7":
 
-                    String cpf = applicantView.informCpf()
+                    String cpf = informData()
                     String[] registerApplicantData = applicantView.showApplicantRegistration()
-                    Applicant newApplicant = applicantService.saveApplicant(registerApplicantData)
-                    controlApplicant.updateApplicant(cpf, newApplicant)
+                    Applicant updatedApplicant = applicantService.saveApplicant(registerApplicantData)
+                    controlApplicant.updateApplicant(cpf, updatedApplicant)
                     return
 
                 case "8":
+
+                    String cnpj = informData()
+                    String[] registerBusinessData = businessView.showBusinessRegistration()
+                    Business updatedBusiness = businessService.saveBusiness(registerBusinessData)
+                    controlBusiness.updateBusiness(cnpj, updatedBusiness)
+                    return
+
+                case "9":
+
+                    String cpf = informData()
+                    controlApplicant.deleteApplicant(cpf)
+                    return
+
+                case "10":
+
+                    String cnpj = informData()
+                    controlBusiness.deleteBusiness(cnpj)
+                    return
+
+                case "11":
 
                     controlMatch.affinitySkills(controlApplicant.listApplicants(), vacancyController.listVacancies())
                     return

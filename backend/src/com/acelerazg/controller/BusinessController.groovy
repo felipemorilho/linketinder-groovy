@@ -26,4 +26,14 @@ class BusinessController {
 
         return null
     }
+
+    static void updateBusiness(String cnpj, Business business) {
+
+        businessDAO.updateBusiness(cnpj, business)
+    }
+
+    static void deleteBusiness(String cnpj) {
+
+        businessDAO.deleteBusiness(cnpj)
+    }
 }
