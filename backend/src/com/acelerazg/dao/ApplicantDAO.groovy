@@ -150,4 +150,26 @@ class ApplicantDAO {
             dbConn.closeConnection(conn)
         }
     }
+
+    static void insertApplicantJobVacancy(String cpf, int jobVacancyId) {
+
+        Sql conn = dbConn.establishConnection()
+
+        try {
+
+            def applicantId = conn.firstRow("SELECT id FROM applicants WHERE cpf = ?", cpf).id
+
+            String insertApplicantJob = "INSERT INTO applicant_job_vacancy (applicant_id, job_vacancy_id) VALUES (?, ?)"
+
+            conn.execute(insertApplicantJob, applicantId, jobVacancyId)
+
+        } catch (Exception ignore) {
+
+            println("Erro ao aplicar à vaga.")
+
+        } finally {
+
+            dbConn.closeConnection(conn)
+        }
+    }
 }

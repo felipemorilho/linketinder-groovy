@@ -1,9 +1,7 @@
 package com.acelerazg.dao
 
 import groovy.sql.Sql
-import groovy.transform.CompileStatic
 
-@CompileStatic
 class DatabaseConnection {
 
     private static final String url = 'jdbc:postgresql://localhost:5432/linketinder'
@@ -12,10 +10,13 @@ class DatabaseConnection {
     private static final String driver = 'org.postgresql.Driver'
 
     static Sql establishConnection() {
+
         try {
+
             return Sql.newInstance(url, user, password, driver)
 
-        } catch (Exception e) {
+        } catch (Exception ignore) {
+
             println("Erro ao conectar com o banco de dados! ${e.message}")
             return null
         }
@@ -25,12 +26,14 @@ class DatabaseConnection {
         try {
 
             if(sql != null) {
+
                 sql.close()
+
             }
-        } catch (Exception e) {
+
+        } catch (Exception ignore) {
 
             println("Erro ao fechar conexão com o banco de dados!")
         }
     }
-
 }

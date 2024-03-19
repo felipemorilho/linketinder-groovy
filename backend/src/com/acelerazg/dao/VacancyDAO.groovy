@@ -89,6 +89,57 @@ class VacancyDAO {
         return vacancies
     }
 
+    static void updateVacancy(int vacancyId, Vacancy vacancy) {
+
+        Sql conn = dbConn.establishConnection()
+
+        try {
+
+            conn.execute("DELETE FROM job_vacancy_skills WHERE job_vacancy_skills.job_vacancy_id = ?", vacancyId)
+
+            String updateQuery = "UPDATE job_vacancies SET job_title=?, job_description=?, company_id=? WHERE id=?"
+
+            conn.execute(updateQuery, vacancy.jobTitle, vacancy.jobDescription, vacancy.businessId, vacancyId )
+
+            vacancy.skills.forEach{skill ->
+
+                def skillId = conn.firstRow("SELECT id FROM skills WHERE UPPER(name) = ?::text", [skill.toString()]).id
+
+                conn.execute("INSERT INTO job_vacancy_skills (job_vacancy_id, skill_id) " +
+                        "VALUES (?, ?)",
+                        vacancyId, skillId)
+            }
+
+        } catch (Exception ignore) {
+
+            println("Erro ao atualizar vaga. Tente novamente")
+
+        } finally {
+
+            dbConn.closeConnection(conn)
+        }
+    }
+
+    static void deleteVacancy(int vacancyId) {
+
+        Sql conn = dbConn.establishConnection()
+
+        try {
+
+            String deleteQuery = "DELETE FROM job_vacancies WHERE id=?"
+
+            conn.execute(deleteQuery, vacancyId)
+
+        } catch (Exception ignore) {
+
+            println("Erro ao deletar, tente novamente.")
+
+        } finally {
+
+            dbConn.closeConnection(conn)
+        }
+    }
+
     static boolean checkIfBusinessExists(int businessId) {
 
         Sql conn = dbConn.establishConnection()

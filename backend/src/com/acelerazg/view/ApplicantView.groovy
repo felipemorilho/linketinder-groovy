@@ -70,7 +70,6 @@ class ApplicantView {
         }
 
         return [name, email, state, cep, cpf, age.toInteger(), education, description, skills]
-
     }
 
     static showApplicant (List<Applicant> applicants) {
@@ -88,14 +87,4 @@ class ApplicantView {
 
         }
     }
-
-
-    /*Applicant showUpdateApplicant() {
-
-        String[] updateApplicant = showApplicantRegistration()
-
-        return new Applicant(updateApplicant)
-    }*/
-
-
 }

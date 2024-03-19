@@ -7,17 +7,22 @@ class BusinessService {
 
     static saveBusiness(String[] registerBusinessData) {
 
-        String name = registerBusinessData[0]
-        String email = registerBusinessData[1]
-        String cnpj = registerBusinessData[2]
-        String state = registerBusinessData[3]
-        String country = registerBusinessData[4]
-        String cep = registerBusinessData[5]
-        String description = registerBusinessData[6]
+        try {
 
-//        String skillsString = registerBusinessData[7].replaceAll("[\\[\\]]", '')
-//        List<Skill> skills = skillsString.tokenize(',').collect { Skill.valueOf(it.trim()) }
+            String name = registerBusinessData[0]
+            String email = registerBusinessData[1]
+            String cnpj = registerBusinessData[2]
+            String state = registerBusinessData[3]
+            String country = registerBusinessData[4]
+            String cep = registerBusinessData[5]
+            String description = registerBusinessData[6]
 
-        return new Business(name, email, cnpj, state, country, cep, description)
+            return new Business(name, email, cnpj, state, country, cep, description)
+
+        } catch (Exception ignore) {
+
+            println("Erro ao salvar dados da empresa")
+            return null
+        }
     }
 }

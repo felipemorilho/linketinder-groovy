@@ -1,6 +1,6 @@
 package com.acelerazg.dao
 
-import com.acelerazg.model.Applicant
+
 import com.acelerazg.model.Business
 import groovy.sql.GroovyRowResult
 import groovy.sql.Sql
@@ -38,6 +38,7 @@ class BusinessDAO {
         List<Business> businesses = []
 
         try {
+
             List<GroovyRowResult> rows = conn.rows("SELECT * FROM companies")
 
             rows.each { row ->

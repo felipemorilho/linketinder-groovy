@@ -27,4 +27,13 @@ class VacancyController {
         return null
     }
 
+    static void updateVacancy (int vacancyId, Vacancy vacancy) {
+
+        vacancyDAO.updateVacancy(vacancyId, vacancy)
+    }
+
+    static void deleteVacancy(int vacancyId) {
+
+        vacancyDAO.deleteVacancy(vacancyId)
+    }
 }

@@ -13,6 +13,12 @@ class ApplicantController {
 
     }
 
+    static void applicantJobApply(String cpf, int id) {
+
+        applicantDAO.insertApplicantJobVacancy(cpf, id)
+
+    }
+
     static List<Applicant> listApplicants() {
 
         List<Applicant> applicants = applicantDAO.readApplicants()
@@ -38,5 +44,7 @@ class ApplicantController {
 
         applicantDAO.deleteApplicant(cpf)
     }
+
+
 
 }
