@@ -1,9 +1,8 @@
 package com.acelerazg.test
 
-import com.acelerazg.controller.ApplicantController
+
 import com.acelerazg.controller.BusinessController
 import com.acelerazg.enums.Skill
-import com.acelerazg.model.Applicant
 import com.acelerazg.model.Business
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

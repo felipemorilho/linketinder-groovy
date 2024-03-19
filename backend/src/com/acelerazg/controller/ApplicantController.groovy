@@ -1,22 +1,50 @@
 package com.acelerazg.controller
 
-
+import com.acelerazg.dao.ApplicantDAO
 import com.acelerazg.model.Applicant
 
 class ApplicantController {
 
-    List<Applicant> applicants = []
+    static private ApplicantDAO applicantDAO = new ApplicantDAO()
 
-    void registerApplicant(Applicant applicant) {
+    static void registerApplicant(Applicant applicant) {
 
-        applicants.add(applicant)
+        applicantDAO.insertApplicant(applicant)
+
+    }
+
+    static void applicantJobApply(String cpf, int id) {
+
+        applicantDAO.insertApplicantJobVacancy(cpf, id)
 
     }
 
-    List<Applicant> listApplicants() {
+    static List<Applicant> listApplicants() {
 
-        applicants
+        List<Applicant> applicants = applicantDAO.readApplicants()
+
+        if(!applicants.isEmpty()) {
+
+            return applicants
+
+        }
+
+        println("Não há candidatos para exibir.")
+
+        return null
+    }
+
+    static void updateApplicant(String cpf, Applicant applicant) {
+
+        applicantDAO.updateApplicant(cpf, applicant)
 
     }
+
+    static void deleteApplicant(String cpf) {
+
+        applicantDAO.deleteApplicant(cpf)
+    }
+
+
 
 }

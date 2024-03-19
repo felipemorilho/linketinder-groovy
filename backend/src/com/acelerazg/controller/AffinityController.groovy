@@ -1,23 +1,23 @@
 package com.acelerazg.controller
 
 import com.acelerazg.model.Applicant
-import com.acelerazg.model.Business
+import com.acelerazg.model.Vacancy
 
 class AffinityController {
 
-    static affinitySkills(List<Applicant> applicant, List<Business> business) {
+    static affinitySkills(List<Applicant> applicant, List<Vacancy> vacancy) {
 
         boolean hasAffinity = false
 
         applicant.each {applicants ->
 
-            business.each { company ->
+            vacancy.each { vacancies ->
 
-                if(applicants.getSkills().containsAll(company.getSkills())) {
+                if(applicants.getSkills().containsAll(vacancies.getSkills())) {
 
-                    println("""\n\u001B[34mMatch encontrado!!
+                    println("""\n\u001B[34m Afinidade encontrada!!
                 Nome do candidato: ${applicants.name}, Email: ${applicants.email}
-                Nome da empresa: ${company.name}, Email: ${company.email}
+                Nome da empresa: ${vacancies.jobTitle}
                 \u001B[0m""")
 
                     hasAffinity = true
@@ -28,7 +28,7 @@ class AffinityController {
 
         if (!hasAffinity) {
 
-            println("\n\u001B[31mNão há, no momento, match entre candidatos e empresas!!!\u001B[0m")
+            println("\n\u001B[31m Não há, no momento, match entre candidatos e vagas!!!\u001B[0m")
 
         }
     }

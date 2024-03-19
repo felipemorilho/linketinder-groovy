@@ -29,6 +29,9 @@ class ApplicantView {
         print("Digite a idade: ")
         String age = scan.nextLine()
 
+        print("Digite a sua formação: ")
+        String education = scan.nextLine()
+
         print("Aqui, faça uma descrição sobre você: ")
         String description = scan.nextLine()
 
@@ -38,10 +41,12 @@ class ApplicantView {
 
             println('''Escolha suas competências: 
 
-            PYTHON, JAVA, SPRING_FRAMEWORK, 
-            ANGULAR, GROOVY, JAVASCRIPT ou TYPESCRIPT
+            PYTHON, JAVA, SPRING, 
+            ANGULAR, GROOVY, JAVASCRIPT,
+            TYPESCRIPT, NODE OU REACT
 
-            Digite "sair" para finalizar.''')
+            Digite "sair" para finalizar.
+            ''')
 
             print("Digite a que deseja adicionar: ")
             String readSkill = scan.nextLine()
@@ -62,27 +67,23 @@ class ApplicantView {
                 println("Habilidade Inválida. Por favor, escolha uma da lista!")
 
             }
-
         }
 
-        println("\n\u001B[36m${name}, seu cadastro foi efetuado!\u001B[0m")
-
-        return [name, email, state, cep, cpf, age.toInteger(), description, skills]
-
+        return [name, email, state, cep, cpf, age.toInteger(), education, description, skills]
     }
 
-    static showApplicant (List<Applicant> users) {
+    static showApplicant (List<Applicant> applicants) {
 
-        users.each { person ->
+        applicants.each { applicant ->
 
-            println("Nome: ${person.getName()}, " +
-                    "Idade: ${person.age}, " +
-                    "CPF: ${person.cpf}, " +
-                    "Email: ${person.getEmail()}, " +
-                    "Estado: ${person.state}, " +
-                    "CEP: ${person.cep}, " +
-                    "Descrição: ${person.description}, " +
-                    "Competencias: ${person.getSkills()}")
+            println("Nome: ${applicant.name}, " +
+                    "Idade: ${applicant.age}, " +
+                    "CPF: ${applicant.cpf}, " +
+                    "Email: ${applicant.email}, " +
+                    "Estado: ${applicant.state}, " +
+                    "CEP: ${applicant.cep}, " +
+                    "Descrição: ${applicant.description}, " +
+                    "Competencias: ${applicant.getSkills()}")
 
         }
     }

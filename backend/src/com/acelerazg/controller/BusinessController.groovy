@@ -1,20 +1,39 @@
 package com.acelerazg.controller
 
+import com.acelerazg.dao.BusinessDAO
 import com.acelerazg.model.Business
 
 class BusinessController {
 
-    List<Business> companies = []
+    static private BusinessDAO businessDAO = new BusinessDAO()
 
-    void registerCompany(Business company) {
+    static void registerBusiness(Business business) {
 
-        companies.add(company)
+        businessDAO.insertBusiness(business)
 
     }
 
-    List<Business> listCompanies() {
+    static List<Business> listBusiness() {
 
-        companies
+        List<Business> businesses = businessDAO.readBusiness()
 
+        if(!businesses.isEmpty()) {
+
+            return businesses
+        }
+
+        println("Não há empresas para exibir.")
+
+        return null
+    }
+
+    static void updateBusiness(String cnpj, Business business) {
+
+        businessDAO.updateBusiness(cnpj, business)
+    }
+
+    static void deleteBusiness(String cnpj) {
+
+        businessDAO.deleteBusiness(cnpj)
     }
 }
