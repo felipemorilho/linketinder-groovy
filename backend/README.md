@@ -14,30 +14,37 @@ A atual versão roda como "Super Usuário", onde é possível entrar em todas op
 
 Você pode escolher entre as opções disponíveis:
 
+```
 1 - Menu Candidato
 2 - Menu Empresa
 3 - Verificar se há afinidade entre candidato/empresa
 0 - Sair
+```
 
-> Menu Candidato
->> 1 - Cadastro Candidato
->> 2 - Atualizar Candidato
->> 3 - Aplicar à Vaga
->> 4 - Listar Candidatos
->> 5 - Listar Vagas
->> 6 - Deletar Candidato
->> 0 - Sair
+```
+                    Menu Candidato
 
-> Menu Empresa
->> 1 - Cadastro Empresa
->> 2 - Atualizar Empresa
->> 3 - Cadastro de Vaga
->> 4 - Atualizar Vaga
->> 5 - Listar Empresas
->> 6 - Listar Vagas
->> 7 - Deletar Empresa
->> 8 - Deletar Vaga
->> 0 - Sair
+1 - Cadastro Candidato
+2 - Atualizar Candidato
+3 - Aplicar à Vaga
+4 - Listar Candidatos
+5 - Listar Vagas
+6 - Deletar Candidato
+0 - Sair
+```
+
+```
+                     Menu Empresa
+1 - Cadastro Empresa
+2 - Atualizar Empresa
+3 - Cadastro de Vaga
+4 - Atualizar Vaga
+5 - Listar Empresas
+6 - Listar Vagas
+7 - Deletar Empresa
+8 - Deletar Vaga
+0 - Sair
+```
 
 Escolha as opções e siga as intruções.
 
