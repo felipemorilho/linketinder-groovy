@@ -8,21 +8,36 @@ Como executar o programa:
 - Faça o pull do repositório remoto para a sua máquina local
 - Execute o programa na IDE de sua preferência (recomenda-se o uso do IntelliJ)
 
-O aplicativo já vem com 5 candidatos e 5 empresas pré cadastradas. Por isso, já ao rodar o programa já terão esses para consulta.
+Aplicação integrada com banco de dados, utilizando PostgreSQL.
+
+A atual versão roda como "Super Usuário", onde é possível entrar em todas opções, inclusive trabalhando com os CRUD de cada uma.
 
 Você pode escolher entre as opções disponíveis:
 
-- 1 - Cadastro Candidato
+1 - Menu Candidato
+2 - Menu Empresa
+3 - Verificar se há afinidade entre candidato/empresa
+0 - Sair
 
-- 2 - Cadastro Empresa
+> Menu Candidato
+>> 1 - Cadastro Candidato
+>> 2 - Atualizar Candidato
+>> 3 - Aplicar à Vaga
+>> 4 - Listar Candidatos
+>> 5 - Listar Vagas
+>> 6 - Deletar Candidato
+>> 0 - Sair
 
-- 3 - Listar Candidatos
+> Menu Empresa
+>> 1 - Cadastro Empresa
+>> 2 - Atualizar Empresa
+>> 3 - Cadastro de Vaga
+>> 4 - Atualizar Vaga
+>> 5 - Listar Empresas
+>> 6 - Listar Vagas
+>> 7 - Deletar Empresa
+>> 8 - Deletar Vaga
+>> 0 - Sair
 
-- 4 - Listar Empresas
-
-- 5 - Verificar se há match entre candidato/empresa
-
-- 0 - Sair do Programa
-
-Você tem a opção de adicionar manualmente um novo candidato ou empresa, o programa irá te guiar nas opções necessárias.
+Escolha as opções e siga as intruções.
 
