@@ -17,7 +17,7 @@ class DatabaseConnection {
 
         } catch (Exception ignore) {
 
-            println("Erro ao conectar com o banco de dados! ${e.message}")
+            println("Erro ao conectar com o banco de dados!")
             return null
         }
     }
